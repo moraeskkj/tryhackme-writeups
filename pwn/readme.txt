@@ -127,6 +127,63 @@ i was trying insert a letter in input, but didn't work no way. So an lamp lit up
 
 how the two numbers are positive, the "if" let me pass and when the program makes " cmp [rbp-0xc],0 " , what actually happens is 0 - [rbp-0xc], this active the sign flag and the program give the shell to me.
 
+===================================---===================================
+
+*PWN106
 
 
+this program just ask for a username and response with your input, but i remembered that i read about format string vulnerability in the room information, so, if you type a few: %x.%x.%x.%x will receive a some of address in stack, i think that this challenge will take to me a long time because i never understand very well how to exploit a format string but, it's worth a try( i learned this expression today :D)
 
+
+AAAA.%x.%x.%x.%x.%x.%x.%x.%x.%x.%x.%x.%x.%x.%x.%x.%x.%x.%x.%x
+
+i sended this to found the position in stack that my input will be
+
+output: AAAA.310192c0.0.0.e8f52380.aea5caf0.7b4d4854.67616c66.65746361.7d58.41414141.252e7825.2e78252e.78252e78.252e7825.2e78252e.
+
+as can you see, the tenth position contains 41414141 :D
+
+    Arch:     amd64-64-little
+    RELRO:    Partial RELRO
+    Stack:    Canary found
+    NX:       NX enabled
+    PIE:      PIE enabled
+
+i think i'm fucked...
+
+no, i'm not because i went to see the hex dump and i found the flag but i wanna to exploit with the right way (note1: i was wrong,this isn't the flag note2: i was wrong again, this is the flag but i need to find in real server)
+
+00007fff:cf9a8930|5b5858587b4d4854|THM{XXX[|
+00007fff:cf9a8938|6465725f67616c66|flag_red|
+00007fff:cf9a8940|58585d6465746361|acted]XX|
+00007fff:cf9a8948|0000000000007d58|X}......|
+
+so... i don't know, i can't make anything with this. it's not a address. i couldn't found anything moreover. i think that using a offsets to get functions from LIBC ??
+
+i'm so stupid :D it's obvious that this is the "real" flag, but i need to see it in the real server too.
+
+i took a few time to make this exploit.py because i'm real blind in py, so i went to search how can i make this and i found this video( Leaking Values with printf (Format String Vuln) - Search Engine - [Intigriti 1337UP LIVE CTF 2022] ) from CryptoCat. this guy help me a lot 
+
+i don't like to just coping and pasting code so i add some comments because i took a while to discover how this code works
+
+
+===================================---===================================
+
+*PWN107
+
+'''
+    [*] '/home/akame/Desktop/ctf/tryhackme/pwn/pwn107/pwn107.pwn107'
+    Arch:     amd64-64-little
+    RELRO:    Full RELRO
+    Stack:    Canary found
+    NX:       NX enabled
+    PIE:      PIE enable
+'''
+
+omg....ok, i took a look with ida in the binary file and what this program do,there are some printf's read's and the program has a canary protection function, so i think this can be a format string again,then...
+
+i'll look with edb debugger to be sure, but if its, i think what i'll do is just use the last code again.
+
+nop, i couldn't see anything but i found an get_streak function,this function calls system('/bin/sh')
+
+i mean, maybe redirect using %n to this function? i dunno if it will work, but it's worth a try !
