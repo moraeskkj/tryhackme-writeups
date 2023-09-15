@@ -182,8 +182,51 @@ i don't like to just coping and pasting code so i add some comments because i to
 
 omg....ok, i took a look with ida in the binary file and what this program do,there are some printf's read's and the program has a canary protection function, so i think this can be a format string again,then...
 
-i'll look with edb debugger to be sure, but if its, i think what i'll do is just use the last code again.
+i'm going to look with edb debugger to be sure, but if its, i think what i'll do is just use the last code again.
 
 nop, i couldn't see anything but i found an get_streak function,this function calls system('/bin/sh')
 
-i mean, maybe redirect using %n to this function? i dunno if it will work, but it's worth a try !
+i mean, maybe use %n to redirect to this function? i dunno if it will work, but it's worth a try !
+
+nop,i understand what i need to do
+
+with format string i can get information from stack and use it to make a bufferoverflow in the second read in program
+
+first i need to discover how can i get the win function adress and an ret instruction adress in execution time with format string.
+after this, i need to discover wich position canary is in.
+
+save this all and makes a buffer overflow :)
+
+canary normally ends with 0x00 so it don't took much time to discovered by me
+
+now i'm going get the offset and the bases adress. 
+
+this video help me understand how to do this
+
+8: Leak PIE (bypass) and Lib-C (ret2system) - Buffer Overflows - Intro to Binary Exploitation (Pwn) from Crypto Cat.
+
+OMG I FINALLY UNDERSTAND THIS SHIT OMG 
+
+i was wrong(as i always am :D ), i tought that the canary is in four position in stack leak but i was wrong,this positions had an address to aleatory ret instruction and a little bit more down had main address
+
+
+# LOCAL
+%4$p - address to ret instruction
+%13$p - canary
+%17$p - address to main function
+
+# REMOTE
+
+%13$p - canary
+%19$p - main 
+
+main - 0x46(decimal = 70) = win_func()
+main + 0x16e(decimal = 136) = ret instruction
+
+i'm so happy omg
+
+fuck, in remote server doesn't work :( , probaly that the addresses doesn't match and is so boring to find without a debbuger
+
+after a lot of tries, i was able to exploited but i was receiving EOF error when i sent any command. I knew that this was because the movaps issue and i was needed an ret instruction to bypass this, but i couldn't found the correct address in stack so, i calculated the offset of this instruction,and it works!!!!!!
+
+FINALLY I FINISHED THIS CHALLENGE OMG LET'S GO TO THE PENULTIMATE ONE NOW
