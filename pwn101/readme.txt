@@ -1,8 +1,6 @@
 ### PWN ROOM's
 
-forgive me for the bad explanations and english, i'm trying to improve this :)
-
-if you need any help my instagram is pinned to my profile
+https://tryhackme.com/room/pwn101
 
 ===================================---===================================
 
@@ -394,3 +392,33 @@ ret in this payload is because the movaps issue,maybe you don't need but my expl
 port = 9010
 
 $ nc $ip port
+
+'''
+[*] '/home/akame/Desktop/ctf/tryhackme/pwn/pwn110/pwn110.pwn110'
+    Arch:     amd64-64-little
+    RELRO:    Partial RELRO
+    Stack:    Canary found
+    NX:       NX enabled
+    PIE:      No PIE (0x400000)
+'''
+
+ok,canary,aslr and nx enabled but no pie, ok, let's execute it
+
+'''
+       ┌┬┐┬─┐┬ ┬┬ ┬┌─┐┌─┐┬┌─┌┬┐┌─┐
+        │ ├┬┘└┬┘├─┤├─┤│  ├┴┐│││├┤ 
+        ┴ ┴└─ ┴ ┴ ┴┴ ┴└─┘┴ ┴┴ ┴└─┘
+                 pwn 110          
+
+Hello pwner, I'm the last challenge 😼
+Well done, Now try to pwn me without libc 😏
+$ hahahahahahhahahahahahahahahhahahahahahahhahahahahahahahhahahahahahahahahaa
+[1]    99116 segmentation fault  ./pwn110.pwn110
+'''
+after a few time analyzing the program i couldn't found any function that help me with something
+
+maybe this is the hardest but it's ok.
+
+i searched a lot and maybe i need to disable the protections with some way, but i don't know how yet.
+
+i saw some peoples saying that found a system function in binary and manipulate the regs to call /bin/sh but i couldn't find it at all so maybe disable protections it's the ""right way"" to do this

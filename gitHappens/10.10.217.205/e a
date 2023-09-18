@@ -1,0 +1,47 @@
+[33mcommit bc8054d9d95854d278359a432b6d97c27e24061d[m
+Author: Hydragyrum <hydragyrum@gmail.com>
+Date:   Thu Jul 23 23:37:32 2020 +0200
+
+    Security says obfuscation isn't enough.
+    
+    They want me to use something called 'SHA-512'
+
+[1mdiff --git a/index.html b/index.html[m
+[1mindex 0eabcfc..ceb8d53 100644[m
+[1m--- a/index.html[m
+[1m+++ b/index.html[m
+[36m@@ -54,8 +54,32 @@[m
+    [m
+ [m
+     <script>[m
+[31m-        //Obfuscated the code so that the hackers can't hack it![m
+[31m-      const _0x270e=['3_P4ss','apply','TML','passwo','w0rd!','object','D\x20USER','NAME\x20O','log','value','^([^\x20]','admin','+[^\x20]}','elemen','RegExp','innerH','getEle','functi','locati','/dashb','+(\x20+[^','form','cookie','Th1s_1','error','_S3cur','login-','userna','login=','mentBy'];(function(_0x57a4a5,_0x270ead){const _0x55f90b=function(_0x33590a){while(--_0x33590a){_0x57a4a5['push'](_0x57a4a5['shift']());}},_0x222b5e=function(){const _0xd50c2c={'data':{'key':'cookie','value':'timeout'},'setCookie':function(_0x49ac1b,_0x4ee3b7,_0x9556ab,_0x5e7434){_0x5e7434=_0x5e7434||{};let _0x12dacb=_0x4ee3b7+'='+_0x9556ab,_0x1a21cb=0x0;for(let _0x518ae6=0x0,_0x20f158=_0x49ac1b['length'];_0x518ae6<_0x20f158;_0x518ae6++){const _0x498e7c=_0x49ac1b[_0x518ae6];_0x12dacb+=';\x20'+_0x498e7c;const _0x12cdae=_0x49ac1b[_0x498e7c];_0x49ac1b['push'](_0x12cdae),_0x20f158=_0x49ac1b['length'],_0x12cdae!==!![]&&(_0x12dacb+='='+_0x12cdae);}_0x5e7434['cookie']=_0x12dacb;},'removeCookie':function(){return'dev';},'getCookie':function(_0x36992f,_0x29b28f){_0x36992f=_0x36992f||function(_0x4ed3b3){return _0x4ed3b3;};const _0x550902=_0x36992f(new RegExp('(?:^|;\x20)'+_0x29b28f['replace'](/([.$?*|{}()[]\/+^])/g,'$1')+'=([^;]*)')),_0x42ee6e=function(_0x3ea42c,_0x23229a){_0x3ea42c(++_0x23229a);};return _0x42ee6e(_0x55f90b,_0x270ead),_0x550902?decodeURIComponent(_0x550902[0x1]):undefined;}},_0x165294=function(){const _0x46ded8=new RegExp('\x5cw+\x20*\x5c(\x5c)\x20*{\x5cw+\x20*[\x27|\x22].+[\x27|\x22];?\x20*}');return _0x46ded8['test'](_0xd50c2c['removeCookie']['toString']());};_0xd50c2c['updateCookie']=_0x165294;let _0x396a12='';const _0x50c526=_0xd50c2c['updateCookie']();if(!_0x50c526)_0xd50c2c['setCookie'](['*'],'counter',0x1);else _0x50c526?_0x396a12=_0xd50c2c['getCookie'](null,'counter'):_0xd50c2c['removeCookie']();};_0x222b5e();}(_0x270e,0x1d4));const _0x55f9=function(_0x57a4a5,_0x270ead){_0x57a4a5=_0x57a4a5-0x0;let _0x55f90b=_0x270e[_0x57a4a5];return _0x55f90b;};const _0x9556ab=function(){let _0x4ab2b6=!![];return function(_0x41e087,_0xbebd7e){const _0x1c8a2e=_0x4ab2b6?function(){if(_0xbebd7e){const _0x30a75d=_0xbebd7e[_0x55f9('0xd')](_0x41e087,arguments);return _0xbebd7e=null,_0x30a75d;}}:function(){};return _0x4ab2b6=![],_0x1c8a2e;};}(),_0x4ee3b7=_0x9556ab(this,function(){const _0x5722b0=typeof window!=='undefi'+'ned'?window:typeof process===_0x55f9('0x11')&&typeof require===_0x55f9('0x1d')+'on'&&typeof global===_0x55f9('0x11')?global:this,_0x3737d6=function(){const _0x11f622=new _0x5722b0[(_0x55f9('0x1a'))](_0x55f9('0x16')+_0x55f9('0x2')+'\x20]+)+)'+_0x55f9('0x18'));return!_0x11f622['test'](_0x4ee3b7);};return _0x3737d6();});_0x4ee3b7();function login(){let _0x479a5e=document[_0x55f9('0x1c')+_0x55f9('0xb')+'Id'](_0x55f9('0x8')+_0x55f9('0x3'));console[_0x55f9('0x14')](_0x479a5e['elemen'+'ts']);let _0xbb8e56=_0x479a5e[_0x55f9('0x19')+'ts'][_0x55f9('0x9')+'me'][_0x55f9('0x15')],_0x127131=_0x479a5e[_0x55f9('0x19')+'ts'][_0x55f9('0xf')+'rd'][_0x55f9('0x15')];_0xbb8e56===_0x55f9('0x17')&&_0x127131===_0x55f9('0x5')+'s_4_L0'+'ng_4nd'+_0x55f9('0x7')+_0x55f9('0xc')+_0x55f9('0x10')?(document[_0x55f9('0x4')]=_0x55f9('0xa')+'1',window[_0x55f9('0x0')+'on']['href']=_0x55f9('0x1')+'oard.h'+'tml'):document['getEle'+_0x55f9('0xb')+'Id'](_0x55f9('0x6'))[_0x55f9('0x1b')+_0x55f9('0xe')]='INVALI'+_0x55f9('0x12')+_0x55f9('0x13')+'R\x20PASS'+'WORD!';}[m
+[32m+[m[32m      async function login() {[m
+[32m+[m[32m        let form = document.getElementById("login-form");[m
+[32m+[m[32m        console.log(form.elements);[m
+[32m+[m[32m        let username = form.elements["username"].value;[m
+[32m+[m[32m        let passwordHash = await digest(form.elements["password"].value);[m
+[32m+[m[32m        if ([m
+[32m+[m[32m          username === 'admin' &&[m
+[32m+[m[32m          passwordHash === '4004c23a71fd6ba9b03ec9cb7eed08471197d84319a865c5442a9d6a7c7cbea070f3cb6aa5106ef80f679a88dbbaf89ff64cb351a151a5f29819a3c094ecebbb'[m
+[32m+[m[32m        ) {[m
+[32m+[m[32m          document.cookie = "login=1";[m
+[32m+[m[32m          window.location.href = "/dashboard.html";[m
+[32m+[m[32m        } else {[m
+[32m+[m[32m          document.getElementById("error").innerHTML =[m
+[32m+[m[32m            "INVALID USERNAME OR PASSWORD!";[m
+[32m+[m[32m        }[m
+[32m+[m[32m      }[m
+[32m+[m
+[32m+[m[32m      async function digest(password) {[m
+[32m+[m[32m          const encoder = new TextEncoder();[m
+[32m+[m[32m          const data = encoder.encode(`${password}SaltyBob`);[m
+[32m+[m[32m          const hashBuffer = await crypto.subtle.digest('SHA-512', data);[m
+[32m+[m[32m          const hashArray = Array.from(new Uint8Array(hashBuffer));                     // convert buffer to byte array[m
+[32m+[m[32m          const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');[m
+[32m+[m[32m          console.log(hashHex)[m
+[32m+[m[32m          return hashHex;[m
+[32m+[m[32m      }[m
+     </script>[m
+   </body>[m
+ </html>[m
