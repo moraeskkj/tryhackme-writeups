@@ -2,6 +2,10 @@
 
 https://tryhackme.com/room/pwn101
 
+forgive me for the bad explanations and english, i'm trying to improve this :)
+
+if you need any help my instagram is pinned to my profile
+
 ===================================---===================================
 
 *PWN101
@@ -404,7 +408,6 @@ $ nc $ip port
 
 ok,canary,aslr and nx enabled but no pie, ok, let's execute it
 
-'''
        ┌┬┐┬─┐┬ ┬┬ ┬┌─┐┌─┐┬┌─┌┬┐┌─┐
         │ ├┬┘└┬┘├─┤├─┤│  ├┴┐│││├┤ 
         ┴ ┴└─ ┴ ┴ ┴┴ ┴└─┘┴ ┴┴ ┴└─┘
@@ -412,13 +415,41 @@ ok,canary,aslr and nx enabled but no pie, ok, let's execute it
 
 Hello pwner, I'm the last challenge 😼
 Well done, Now try to pwn me without libc 😏
-$ hahahahahahhahahahahahahahahhahahahahahahhahahahahahahahhahahahahahahahahaa
+hahahahahahhahahahahahahahahhahahahahahahhahahahahahahahhahahahahahahahahaa
 [1]    99116 segmentation fault  ./pwn110.pwn110
+
+we got a buffer overflow, hmmmmm    
+
+offset is forty bytes but i'm thinking how can i exploit this 
+
+after a few search, disable mprotect to make the stack executable and execute my shellcode with read syscall wichr makes more sense to me
+
+but in this executable, he has canary too, even tough the canary wasn't broken when i made a bufferoverflow, but i don't have any other ideia to exploit this so... :)
+
+
+i'm reading this blog to do this exploit:
+https://syrion.me/binary/elfx64-bypass-nx-with-mprotect/
+
 '''
-after a few time analyzing the program i couldn't found any function that help me with something
+We set the len parameter to 0x1000 (it’s enough from address 0x7fffffffe000 to our shellcode) and the prot parameter to RWX, which is 0x7.
 
-maybe this is the hardest but it's ok.
+The calling convention for ELF 64 is the following:
 
-i searched a lot and maybe i need to disable the protections with some way, but i don't know how yet.
+Arguments in RDI, RSI, RDX, RCX, R8, R9
+Return Value in RAX
+'''
 
-i saw some peoples saying that found a system function in binary and manipulate the regs to call /bin/sh but i couldn't find it at all so maybe disable protections it's the ""right way"" to do this
+i'll need the stack adress, an len, mprotect address and a few gadgets
+
+ok, maybe it's possible make /bin/sh just using ROPgadget.py but it's cooler in this way, disabling the protection haha
+
+basically what the exploit does is, reach the return with an buffer and call the mprotect function to disable bitNx protection, then he jumps into shellcode in stack.
+
+but for that to be possible, first you need to leak the __libc_stack_end_address and decrement 0xfffffffff000 or &- 0xfff
+to get the start address of the stack and pass in to the mprotect function
+
+i had some difficulties with the partial relro because he changes the address of my payload every time, i had to leak
+the stack adress :)
+
+and finally I FINISHED THIS!
+
