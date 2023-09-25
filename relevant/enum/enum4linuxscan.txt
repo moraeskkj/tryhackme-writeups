@@ -1,0 +1,166 @@
+[92mENUM4LINUX - next generation (v1.3.1)[0m
+
+ ==========================
+|    Target Information    |
+ ==========================
+[94m[*] Target ........... 10.10.144.59[0m
+[94m[*] Username ......... 'Bill'[0m
+[94m[*] Random Username .. 'axvnlvtr'[0m
+[94m[*] Password ......... 'Juw4nnaM4n420696969!$$$'[0m
+[94m[*] Timeout .......... 5 second(s)[0m
+
+ =====================================
+|    Listener Scan on 10.10.144.59    |
+ =====================================
+[94m[*] Checking LDAP[0m
+[91m[-] Could not connect to LDAP on 389/tcp: timed out[0m
+[94m[*] Checking LDAPS[0m
+[91m[-] Could not connect to LDAPS on 636/tcp: timed out[0m
+[94m[*] Checking SMB[0m
+[92m[+] SMB is accessible on 445/tcp[0m
+[94m[*] Checking SMB over NetBIOS[0m
+[92m[+] SMB over NetBIOS is accessible on 139/tcp[0m
+
+ ===========================================================
+|    NetBIOS Names and Workgroup/Domain for 10.10.144.59    |
+ ===========================================================
+[V] Trying to get NetBIOS names information, running command: nmblookup -s /tmp/tmpb57r04_8 -A 10.10.144.59
+[91m[-] Could not get NetBIOS names information via 'nmblookup': timed out[0m
+
+ =========================================
+|    SMB Dialect Check on 10.10.144.59    |
+ =========================================
+[94m[*] Trying on 445/tcp[0m
+[92m[+] Supported dialects and settings:
+Supported dialects:
+  SMB 1.0: true
+  SMB 2.02: true
+  SMB 2.1: true
+  SMB 3.0: true
+  SMB 3.1.1: true
+Preferred dialect: SMB 3.0
+SMB1 only: false
+SMB signing required: false[0m
+
+ ===========================================================
+|    Domain Information via SMB session for 10.10.144.59    |
+ ===========================================================
+[94m[*] Enumerating via unauthenticated SMB session on 445/tcp[0m
+[92m[+] Found domain information via SMB
+NetBIOS computer name: RELEVANT
+NetBIOS domain name: ''
+DNS domain: Relevant
+FQDN: Relevant
+Derived membership: workgroup member
+Derived domain: unknown[0m
+
+ =========================================
+|    RPC Session Check on 10.10.144.59    |
+ =========================================
+[94m[*] Check for null session[0m
+[V] Attempting to make session, running command: smbclient -W WORKGROUP -U % -s /tmp/tmpb57r04_8 -t 5 -c help '//10.10.144.59/ipc$'
+[91m[-] Could not establish null session: STATUS_ACCESS_DENIED[0m
+[94m[*] Check for user session[0m
+[V] Attempting to make session, running command: smbclient -W WORKGROUP -U 'Bill%Juw4nnaM4n420696969!$$$' -s /tmp/tmpb57r04_8 -t 5 -c help '//10.10.144.59/ipc$'
+[92m[+] Server allows session using username 'Bill', password 'Juw4nnaM4n420696969!$$$'[0m
+[94m[*] Check for random user[0m
+[V] Attempting to make session, running command: smbclient -W WORKGROUP -U 'axvnlvtr%Juw4nnaM4n420696969!$$$' -s /tmp/tmpb57r04_8 -t 5 -c help '//10.10.144.59/ipc$'
+[92m[+] Server allows session using username 'axvnlvtr', password 'Juw4nnaM4n420696969!$$$'[0m
+[92m[H] Rerunning enumeration with user 'axvnlvtr' might give more results[0m
+
+ ===================================================
+|    Domain Information via RPC for 10.10.144.59    |
+ ===================================================
+[V] Attempting to get domain SID, running command: rpcclient -W WORKGROUP -U 'Bill%Juw4nnaM4n420696969!$$$' -s /tmp/tmpb57r04_8 -c lsaquery 10.10.144.59
+[92m[+] Domain: WORKGROUP[0m
+[92m[+] Domain SID: NULL SID[0m
+[92m[+] Membership: workgroup member[0m
+
+ ===============================================
+|    OS Information via RPC for 10.10.144.59    |
+ ===============================================
+[94m[*] Enumerating via unauthenticated SMB session on 445/tcp[0m
+[92m[+] Found OS information via SMB[0m
+[94m[*] Enumerating via 'srvinfo'[0m
+[V] Attempting to get OS info with command, running command: rpcclient -W WORKGROUP -U 'Bill%Juw4nnaM4n420696969!$$$' -s /tmp/tmpb57r04_8 -c srvinfo 10.10.144.59
+[92m[+] Found OS information via 'srvinfo'[0m
+[92m[+] After merging OS information we have the following result:
+OS: Windows Server 2016 Standard Evaluation 14393
+OS version: '10.0'
+OS release: '1607'
+OS build: '14393'
+Native OS: Windows Server 2016 Standard Evaluation 14393
+Native LAN manager: Windows Server 2016 Standard Evaluation 6.3
+Platform id: '500'
+Server type: '0x9003'
+Server type string: Wk Sv NT SNT[0m
+
+ =====================================
+|    Users via RPC on 10.10.144.59    |
+ =====================================
+[94m[*] Enumerating users via 'querydispinfo'[0m
+[V] Attempting to get userlist, running command: rpcclient -W WORKGROUP -U 'Bill%Juw4nnaM4n420696969!$$$' -s /tmp/tmpb57r04_8 -c querydispinfo 10.10.144.59
+[91m[-] Could not find users via 'querydispinfo': STATUS_CONNECTION_DISCONNECTED[0m
+[94m[*] Enumerating users via 'enumdomusers'[0m
+[V] Attempting to get userlist, running command: rpcclient -W WORKGROUP -U 'Bill%Juw4nnaM4n420696969!$$$' -s /tmp/tmpb57r04_8 -c enumdomusers 10.10.144.59
+[91m[-] Could not find users via 'enumdomusers': STATUS_CONNECTION_DISCONNECTED[0m
+
+ ======================================
+|    Groups via RPC on 10.10.144.59    |
+ ======================================
+[94m[*] Enumerating local groups[0m
+[V] Attempting to get local groups, running command: rpcclient -W WORKGROUP -U 'Bill%Juw4nnaM4n420696969!$$$' -s /tmp/tmpb57r04_8 -c 'enumalsgroups domain' 10.10.144.59
+[91m[-] Could not get groups via 'enumalsgroups domain': STATUS_CONNECTION_DISCONNECTED[0m
+[94m[*] Enumerating builtin groups[0m
+[V] Attempting to get builtin groups, running command: rpcclient -W WORKGROUP -U 'Bill%Juw4nnaM4n420696969!$$$' -s /tmp/tmpb57r04_8 -c 'enumalsgroups builtin' 10.10.144.59
+[91m[-] Could not get groups via 'enumalsgroups builtin': STATUS_CONNECTION_DISCONNECTED[0m
+[94m[*] Enumerating domain groups[0m
+[V] Attempting to get domain groups, running command: rpcclient -W WORKGROUP -U 'Bill%Juw4nnaM4n420696969!$$$' -s /tmp/tmpb57r04_8 -c enumdomgroups 10.10.144.59
+[91m[-] Could not get groups via 'enumdomgroups': STATUS_CONNECTION_DISCONNECTED[0m
+
+ ======================================
+|    Shares via RPC on 10.10.144.59    |
+ ======================================
+[V] Attempting to get share list using authentication, running command: smbclient -W WORKGROUP -U 'Bill%Juw4nnaM4n420696969!$$$' -s /tmp/tmpb57r04_8 -t 5 -L //10.10.144.59 -g
+[94m[*] Enumerating shares[0m
+[92m[+] Found 4 share(s):
+ADMIN$:
+  comment: Remote Admin
+  type: Disk
+C$:
+  comment: Default share
+  type: Disk
+IPC$:
+  comment: Remote IPC
+  type: IPC
+nt4wrksv:
+  comment: ''
+  type: Disk[0m
+[94m[*] Testing share ADMIN$[0m
+[V] Attempting to map share //10.10.144.59/ADMIN$, running command: smbclient -W WORKGROUP -U 'Bill%Juw4nnaM4n420696969!$$$' -s /tmp/tmpb57r04_8 -t 5 -c dir '//10.10.144.59/ADMIN$'
+[92m[+] Mapping: DENIED, Listing: N/A[0m
+[94m[*] Testing share C$[0m
+[V] Attempting to map share //10.10.144.59/C$, running command: smbclient -W WORKGROUP -U 'Bill%Juw4nnaM4n420696969!$$$' -s /tmp/tmpb57r04_8 -t 5 -c dir '//10.10.144.59/C$'
+[92m[+] Mapping: DENIED, Listing: N/A[0m
+[94m[*] Testing share IPC$[0m
+[V] Attempting to map share //10.10.144.59/IPC$, running command: smbclient -W WORKGROUP -U 'Bill%Juw4nnaM4n420696969!$$$' -s /tmp/tmpb57r04_8 -t 5 -c dir '//10.10.144.59/IPC$'
+[92m[+] Mapping: OK, Listing: NOT SUPPORTED[0m
+[94m[*] Testing share nt4wrksv[0m
+[V] Attempting to map share //10.10.144.59/nt4wrksv, running command: smbclient -W WORKGROUP -U 'Bill%Juw4nnaM4n420696969!$$$' -s /tmp/tmpb57r04_8 -t 5 -c dir //10.10.144.59/nt4wrksv
+[92m[+] Mapping: OK, Listing: OK[0m
+
+ =========================================
+|    Policies via RPC for 10.10.144.59    |
+ =========================================
+[94m[*] Trying port 445/tcp[0m
+[91m[-] SMB connection error on port 445/tcp: RPC_S_ACCESS_DENIED[0m
+[94m[*] Trying port 139/tcp[0m
+[91m[-] SMB connection error on port 139/tcp: session failed[0m
+
+ =========================================
+|    Printers via RPC for 10.10.144.59    |
+ =========================================
+[V] Attempting to get printer info, running command: rpcclient -W WORKGROUP -U 'Bill%Juw4nnaM4n420696969!$$$' -s /tmp/tmpb57r04_8 -c enumprinters 10.10.144.59
+[92m[+] No printers returned (this is not an error)[0m
+
+Completed after 66.10 seconds
