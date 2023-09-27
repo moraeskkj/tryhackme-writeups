@@ -1,0 +1,65 @@
+Starting Nmap 7.80 ( https://nmap.org ) at 2023-09-27 04:38 PDT
+NSE: Loaded 45 scripts for scanning.
+Initiating Ping Scan at 04:38
+Scanning 10.10.124.103 [4 ports]
+Completed Ping Scan at 04:38, 0.24s elapsed (1 total hosts)
+Initiating Parallel DNS resolution of 1 host. at 04:38
+Completed Parallel DNS resolution of 1 host. at 04:38, 0.01s elapsed
+Initiating SYN Stealth Scan at 04:38
+Scanning 10.10.124.103 [65535 ports]
+Discovered open port 22/tcp on 10.10.124.103
+Discovered open port 80/tcp on 10.10.124.103
+Stats: 0:00:16 elapsed; 0 hosts completed (1 up), 1 undergoing SYN Stealth Scan
+SYN Stealth Scan Timing: About 15.46% done; ETC: 04:40 (0:01:28 remaining)
+SYN Stealth Scan Timing: About 32.58% done; ETC: 04:41 (0:01:48 remaining)
+SYN Stealth Scan Timing: About 34.30% done; ETC: 04:42 (0:02:37 remaining)
+SYN Stealth Scan Timing: About 47.90% done; ETC: 04:42 (0:02:21 remaining)
+SYN Stealth Scan Timing: About 72.29% done; ETC: 04:42 (0:01:01 remaining)
+SYN Stealth Scan Timing: About 83.15% done; ETC: 04:42 (0:00:38 remaining)
+Completed SYN Stealth Scan at 04:42, 234.06s elapsed (65535 total ports)
+Initiating Service scan at 04:42
+Scanning 2 services on 10.10.124.103
+Completed Service scan at 04:42, 12.99s elapsed (2 services on 1 host)
+Initiating OS detection (try #1) against 10.10.124.103
+Retrying OS detection (try #2) against 10.10.124.103
+Retrying OS detection (try #3) against 10.10.124.103
+Retrying OS detection (try #4) against 10.10.124.103
+Retrying OS detection (try #5) against 10.10.124.103
+NSE: Script scanning 10.10.124.103.
+NSE: Starting runlevel 1 (of 2) scan.
+Initiating NSE at 04:42
+Completed NSE at 04:42, 0.89s elapsed
+NSE: Starting runlevel 2 (of 2) scan.
+Initiating NSE at 04:42
+Completed NSE at 04:42, 0.84s elapsed
+Nmap scan report for 10.10.124.103
+Host is up, received echo-reply ttl 63 (0.21s latency).
+Scanned at 2023-09-27 04:38:20 PDT for 264s
+Not shown: 65533 closed ports
+Reason: 65533 resets
+PORT   STATE SERVICE REASON         VERSION
+22/tcp open  ssh     syn-ack ttl 63 OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+80/tcp open  http    syn-ack ttl 63 Golang net/http server (Go-IPFS json-rpc or InfluxDB API)
+No exact OS matches for host (If you know what OS is running on it, see https://nmap.org/submit/ ).
+TCP/IP fingerprint:
+OS:SCAN(V=7.80%E=4%D=9/27%OT=22%CT=1%CU=38433%PV=Y%DS=2%DC=I%G=Y%TM=6514153
+OS:4%P=x86_64-pc-linux-gnu)SEQ(SP=103%GCD=1%ISR=10C%TI=Z%CI=Z%II=I%TS=A)OPS
+OS:(O1=M508ST11NW6%O2=M508ST11NW6%O3=M508NNT11NW6%O4=M508ST11NW6%O5=M508ST1
+OS:1NW6%O6=M508ST11)WIN(W1=F4B3%W2=F4B3%W3=F4B3%W4=F4B3%W5=F4B3%W6=F4B3)ECN
+OS:(R=Y%DF=Y%T=40%W=F507%O=M508NNSNW6%CC=Y%Q=)T1(R=Y%DF=Y%T=40%S=O%A=S+%F=A
+OS:S%RD=0%Q=)T2(R=N)T3(R=N)T4(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F=R%O=%RD=0%Q=)T5(R
+OS:=Y%DF=Y%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)T6(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F
+OS:=R%O=%RD=0%Q=)T7(R=Y%DF=Y%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)U1(R=Y%DF=N%
+OS:T=40%IPL=164%UN=0%RIPL=G%RID=G%RIPCK=G%RUCK=G%RUD=G)IE(R=Y%DFI=N%T=40%CD
+OS:=S)
+
+Uptime guess: 11.725 days (since Fri Sep 15 11:18:09 2023)
+Network Distance: 2 hops
+TCP Sequence Prediction: Difficulty=259 (Good luck!)
+IP ID Sequence Generation: All zeros
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Read data files from: /usr/bin/../share/nmap
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 264.53 seconds
+           Raw packets sent: 70894 (3.123MB) | Rcvd: 69773 (2.817MB)

