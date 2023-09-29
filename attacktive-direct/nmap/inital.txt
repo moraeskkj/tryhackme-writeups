@@ -1,0 +1,87 @@
+Starting Nmap 7.80 ( https://nmap.org ) at 2023-09-27 10:45 PDT
+Initiating Ping Scan at 10:45
+Scanning 10.10.186.74 [4 ports]
+Completed Ping Scan at 10:45, 0.24s elapsed (1 total hosts)
+Initiating Parallel DNS resolution of 1 host. at 10:45
+Completed Parallel DNS resolution of 1 host. at 10:45, 0.02s elapsed
+Initiating SYN Stealth Scan at 10:45
+Scanning 10.10.186.74 [65535 ports]
+Discovered open port 3389/tcp on 10.10.186.74
+Discovered open port 139/tcp on 10.10.186.74
+Discovered open port 445/tcp on 10.10.186.74
+Discovered open port 53/tcp on 10.10.186.74
+Discovered open port 80/tcp on 10.10.186.74
+Discovered open port 135/tcp on 10.10.186.74
+Discovered open port 593/tcp on 10.10.186.74
+Discovered open port 49693/tcp on 10.10.186.74
+SYN Stealth Scan Timing: About 8.55% done; ETC: 10:51 (0:05:31 remaining)
+Discovered open port 49665/tcp on 10.10.186.74
+Discovered open port 5985/tcp on 10.10.186.74
+SYN Stealth Scan Timing: About 14.17% done; ETC: 10:52 (0:06:10 remaining)
+Discovered open port 636/tcp on 10.10.186.74
+SYN Stealth Scan Timing: About 21.40% done; ETC: 10:52 (0:05:34 remaining)
+Discovered open port 49664/tcp on 10.10.186.74
+SYN Stealth Scan Timing: About 29.46% done; ETC: 10:52 (0:04:50 remaining)
+Discovered open port 49685/tcp on 10.10.186.74
+Discovered open port 49670/tcp on 10.10.186.74
+SYN Stealth Scan Timing: About 36.55% done; ETC: 10:52 (0:04:22 remaining)
+Discovered open port 49673/tcp on 10.10.186.74
+Discovered open port 49821/tcp on 10.10.186.74
+SYN Stealth Scan Timing: About 43.94% done; ETC: 10:52 (0:03:51 remaining)
+Discovered open port 3268/tcp on 10.10.186.74
+SYN Stealth Scan Timing: About 50.41% done; ETC: 10:52 (0:03:28 remaining)
+Discovered open port 49671/tcp on 10.10.186.74
+SYN Stealth Scan Timing: About 57.96% done; ETC: 10:52 (0:02:55 remaining)
+Discovered open port 49677/tcp on 10.10.186.74
+SYN Stealth Scan Timing: About 65.00% done; ETC: 10:52 (0:02:32 remaining)
+Increasing send delay for 10.10.186.74 from 0 to 5 due to max_successful_tryno increase to 4
+SYN Stealth Scan Timing: About 72.19% done; ETC: 10:53 (0:02:10 remaining)
+Discovered open port 389/tcp on 10.10.186.74
+Discovered open port 49669/tcp on 10.10.186.74
+SYN Stealth Scan Timing: About 78.88% done; ETC: 10:53 (0:01:46 remaining)
+Discovered open port 9389/tcp on 10.10.186.74
+Discovered open port 47001/tcp on 10.10.186.74
+Discovered open port 3269/tcp on 10.10.186.74
+Discovered open port 49666/tcp on 10.10.186.74
+SYN Stealth Scan Timing: About 85.24% done; ETC: 10:54 (0:01:19 remaining)
+Discovered open port 88/tcp on 10.10.186.74
+SYN Stealth Scan Timing: About 92.18% done; ETC: 10:54 (0:00:41 remaining)
+Discovered open port 464/tcp on 10.10.186.74
+Completed SYN Stealth Scan at 10:54, 541.07s elapsed (65535 total ports)
+Nmap scan report for 10.10.186.74
+Host is up, received reset ttl 127 (0.21s latency).
+Scanned at 2023-09-27 10:45:28 PDT for 541s
+Not shown: 65508 closed ports
+Reason: 65508 resets
+PORT      STATE SERVICE          REASON
+53/tcp    open  domain           syn-ack ttl 127
+80/tcp    open  http             syn-ack ttl 127
+88/tcp    open  kerberos-sec     syn-ack ttl 127
+135/tcp   open  msrpc            syn-ack ttl 127
+139/tcp   open  netbios-ssn      syn-ack ttl 127
+389/tcp   open  ldap             syn-ack ttl 127
+445/tcp   open  microsoft-ds     syn-ack ttl 127
+464/tcp   open  kpasswd5         syn-ack ttl 127
+593/tcp   open  http-rpc-epmap   syn-ack ttl 127
+636/tcp   open  ldapssl          syn-ack ttl 127
+3268/tcp  open  globalcatLDAP    syn-ack ttl 127
+3269/tcp  open  globalcatLDAPssl syn-ack ttl 127
+3389/tcp  open  ms-wbt-server    syn-ack ttl 127
+5985/tcp  open  wsman            syn-ack ttl 127
+9389/tcp  open  adws             syn-ack ttl 127
+47001/tcp open  winrm            syn-ack ttl 127
+49664/tcp open  unknown          syn-ack ttl 127
+49665/tcp open  unknown          syn-ack ttl 127
+49666/tcp open  unknown          syn-ack ttl 127
+49669/tcp open  unknown          syn-ack ttl 127
+49670/tcp open  unknown          syn-ack ttl 127
+49671/tcp open  unknown          syn-ack ttl 127
+49673/tcp open  unknown          syn-ack ttl 127
+49677/tcp open  unknown          syn-ack ttl 127
+49685/tcp open  unknown          syn-ack ttl 127
+49693/tcp open  unknown          syn-ack ttl 127
+49821/tcp open  unknown          syn-ack ttl 127
+
+Read data files from: /usr/bin/../share/nmap
+Nmap done: 1 IP address (1 host up) scanned in 541.47 seconds
+           Raw packets sent: 68143 (2.998MB) | Rcvd: 68027 (2.721MB)

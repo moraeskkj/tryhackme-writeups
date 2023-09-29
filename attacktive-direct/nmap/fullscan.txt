@@ -1,0 +1,238 @@
+Starting Nmap 7.80 ( https://nmap.org ) at 2023-09-27 11:11 PDT
+NSE: Loaded 151 scripts for scanning.
+NSE: Script Pre-scanning.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE at 11:11
+Completed NSE at 11:11, 0.00s elapsed
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE at 11:11
+Completed NSE at 11:11, 0.00s elapsed
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE at 11:11
+Completed NSE at 11:11, 0.00s elapsed
+Initiating Ping Scan at 11:11
+Scanning 10.10.186.74 [4 ports]
+Completed Ping Scan at 11:11, 0.25s elapsed (1 total hosts)
+Initiating Parallel DNS resolution of 1 host. at 11:11
+Completed Parallel DNS resolution of 1 host. at 11:11, 0.01s elapsed
+Initiating SYN Stealth Scan at 11:11
+Scanning 10.10.186.74 [65535 ports]
+Discovered open port 3389/tcp on 10.10.186.74
+Discovered open port 445/tcp on 10.10.186.74
+Discovered open port 53/tcp on 10.10.186.74
+Discovered open port 135/tcp on 10.10.186.74
+Discovered open port 139/tcp on 10.10.186.74
+Discovered open port 80/tcp on 10.10.186.74
+Increasing send delay for 10.10.186.74 from 0 to 5 due to 376 out of 1253 dropped probes since last increase.
+SYN Stealth Scan Timing: About 4.54% done; ETC: 11:23 (0:10:52 remaining)
+SYN Stealth Scan Timing: About 5.72% done; ETC: 11:29 (0:16:46 remaining)
+SYN Stealth Scan Timing: About 6.81% done; ETC: 11:34 (0:20:46 remaining)
+SYN Stealth Scan Timing: About 7.79% done; ETC: 11:37 (0:23:52 remaining)
+SYN Stealth Scan Timing: About 11.85% done; ETC: 11:33 (0:18:43 remaining)
+Discovered open port 49665/tcp on 10.10.186.74
+SYN Stealth Scan Timing: About 15.76% done; ETC: 11:31 (0:16:07 remaining)
+SYN Stealth Scan Timing: About 19.13% done; ETC: 11:30 (0:14:52 remaining)
+Discovered open port 49666/tcp on 10.10.186.74
+Discovered open port 49671/tcp on 10.10.186.74
+SYN Stealth Scan Timing: About 24.33% done; ETC: 11:30 (0:13:54 remaining)
+Discovered open port 636/tcp on 10.10.186.74
+SYN Stealth Scan Timing: About 27.88% done; ETC: 11:29 (0:12:51 remaining)
+SYN Stealth Scan Timing: About 31.83% done; ETC: 11:29 (0:11:42 remaining)
+Discovered open port 464/tcp on 10.10.186.74
+Discovered open port 49664/tcp on 10.10.186.74
+Discovered open port 47001/tcp on 10.10.186.74
+SYN Stealth Scan Timing: About 36.45% done; ETC: 11:28 (0:10:50 remaining)
+SYN Stealth Scan Timing: About 41.34% done; ETC: 11:28 (0:09:57 remaining)
+Discovered open port 49677/tcp on 10.10.186.74
+SYN Stealth Scan Timing: About 45.28% done; ETC: 11:28 (0:09:05 remaining)
+Discovered open port 49673/tcp on 10.10.186.74
+SYN Stealth Scan Timing: About 50.04% done; ETC: 11:28 (0:08:09 remaining)
+SYN Stealth Scan Timing: About 55.65% done; ETC: 11:28 (0:07:14 remaining)
+Discovered open port 49669/tcp on 10.10.186.74
+Discovered open port 49693/tcp on 10.10.186.74
+SYN Stealth Scan Timing: About 61.93% done; ETC: 11:27 (0:05:53 remaining)
+Discovered open port 49670/tcp on 10.10.186.74
+Discovered open port 9389/tcp on 10.10.186.74
+SYN Stealth Scan Timing: About 66.80% done; ETC: 11:27 (0:05:03 remaining)
+Discovered open port 5985/tcp on 10.10.186.74
+Discovered open port 3269/tcp on 10.10.186.74
+SYN Stealth Scan Timing: About 71.63% done; ETC: 11:26 (0:04:15 remaining)
+Discovered open port 593/tcp on 10.10.186.74
+SYN Stealth Scan Timing: About 77.40% done; ETC: 11:26 (0:03:17 remaining)
+Discovered open port 389/tcp on 10.10.186.74
+SYN Stealth Scan Timing: About 82.61% done; ETC: 11:26 (0:02:28 remaining)
+Discovered open port 88/tcp on 10.10.186.74
+Discovered open port 49821/tcp on 10.10.186.74
+SYN Stealth Scan Timing: About 87.72% done; ETC: 11:26 (0:01:44 remaining)
+Discovered open port 3268/tcp on 10.10.186.74
+Discovered open port 49685/tcp on 10.10.186.74
+SYN Stealth Scan Timing: About 93.04% done; ETC: 11:25 (0:00:58 remaining)
+Completed SYN Stealth Scan at 11:26, 843.88s elapsed (65535 total ports)
+Initiating Service scan at 11:26
+Scanning 27 services on 10.10.186.74
+Service scan Timing: About 62.96% done; ETC: 11:27 (0:00:34 remaining)
+Completed Service scan at 11:28, 148.05s elapsed (27 services on 1 host)
+Initiating OS detection (try #1) against 10.10.186.74
+Retrying OS detection (try #2) against 10.10.186.74
+Retrying OS detection (try #3) against 10.10.186.74
+Retrying OS detection (try #4) against 10.10.186.74
+Retrying OS detection (try #5) against 10.10.186.74
+Initiating Traceroute at 11:28
+Completed Traceroute at 11:28, 0.23s elapsed
+Initiating Parallel DNS resolution of 2 hosts. at 11:28
+Completed Parallel DNS resolution of 2 hosts. at 11:28, 0.01s elapsed
+NSE: Script scanning 10.10.186.74.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE at 11:28
+Completed NSE at 11:28, 17.93s elapsed
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE at 11:28
+NSE Timing: About 97.22% done; ETC: 11:29 (0:00:01 remaining)
+NSE Timing: About 97.69% done; ETC: 11:30 (0:00:01 remaining)
+NSE Timing: About 99.07% done; ETC: 11:30 (0:00:01 remaining)
+NSE Timing: About 99.54% done; ETC: 11:31 (0:00:01 remaining)
+Completed NSE at 11:31, 121.73s elapsed
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE at 11:31
+Completed NSE at 11:31, 0.00s elapsed
+Nmap scan report for 10.10.186.74
+Host is up, received reset ttl 127 (0.22s latency).
+Scanned at 2023-09-27 11:11:56 PDT for 1144s
+Not shown: 65508 closed ports
+Reason: 65508 resets
+PORT      STATE SERVICE       REASON          VERSION
+53/tcp    open  domain?       syn-ack ttl 127
+| fingerprint-strings: 
+|   DNSVersionBindReqTCP: 
+|     version
+|_    bind
+80/tcp    open  http          syn-ack ttl 127 Microsoft IIS httpd 10.0
+| http-methods: 
+|   Supported Methods: OPTIONS TRACE GET HEAD POST
+|_  Potentially risky methods: TRACE
+|_http-server-header: Microsoft-IIS/10.0
+|_http-title: IIS Windows Server
+88/tcp    open  kerberos-sec  syn-ack ttl 127 Microsoft Windows Kerberos (server time: 2023-09-27 18:26:07Z)
+135/tcp   open  msrpc         syn-ack ttl 127 Microsoft Windows RPC
+139/tcp   open  netbios-ssn   syn-ack ttl 127 Microsoft Windows netbios-ssn
+389/tcp   open  ldap          syn-ack ttl 127 Microsoft Windows Active Directory LDAP (Domain: spookysec.local0., Site: Default-First-Site-Name)
+445/tcp   open  microsoft-ds? syn-ack ttl 127
+464/tcp   open  kpasswd5?     syn-ack ttl 127
+593/tcp   open  ncacn_http    syn-ack ttl 127 Microsoft Windows RPC over HTTP 1.0
+636/tcp   open  tcpwrapped    syn-ack ttl 127
+3268/tcp  open  ldap          syn-ack ttl 127 Microsoft Windows Active Directory LDAP (Domain: spookysec.local0., Site: Default-First-Site-Name)
+3269/tcp  open  tcpwrapped    syn-ack ttl 127
+3389/tcp  open  ms-wbt-server syn-ack ttl 127 Microsoft Terminal Services
+| rdp-ntlm-info: 
+|   Target_Name: THM-AD
+|   NetBIOS_Domain_Name: THM-AD
+|   NetBIOS_Computer_Name: ATTACKTIVEDIREC
+|   DNS_Domain_Name: spookysec.local
+|   DNS_Computer_Name: AttacktiveDirectory.spookysec.local
+|   Product_Version: 10.0.17763
+|_  System_Time: 2023-09-27T18:28:43+00:00
+| ssl-cert: Subject: commonName=AttacktiveDirectory.spookysec.local
+| Issuer: commonName=AttacktiveDirectory.spookysec.local
+| Public Key type: rsa
+| Public Key bits: 2048
+| Signature Algorithm: sha256WithRSAEncryption
+| Not valid before: 2023-09-26T17:40:25
+| Not valid after:  2024-03-27T17:40:25
+| MD5:   c35b e7aa 90bf 59bf a77f e6f7 8a34 ab58
+| SHA-1: 4383 d6ca 80c1 a59b ca27 b1cd 6eb4 5902 4e5e 28f8
+| -----BEGIN CERTIFICATE-----
+| MIIDCjCCAfKgAwIBAgIQOxFl4CtRGodHqPixsN2gljANBgkqhkiG9w0BAQsFADAu
+| MSwwKgYDVQQDEyNBdHRhY2t0aXZlRGlyZWN0b3J5LnNwb29reXNlYy5sb2NhbDAe
+| Fw0yMzA5MjYxNzQwMjVaFw0yNDAzMjcxNzQwMjVaMC4xLDAqBgNVBAMTI0F0dGFj
+| a3RpdmVEaXJlY3Rvcnkuc3Bvb2t5c2VjLmxvY2FsMIIBIjANBgkqhkiG9w0BAQEF
+| AAOCAQ8AMIIBCgKCAQEA1Yoz1maG+geA8CWuwkil9A9GPIL8tpCT5zhqw71oOeG6
+| bg/ymjnUySGJi/oeSev+VwPW86kx50OshU9fLIPzF3wAVZZrCxIm5a+eKb/ezADP
+| 9Jx0rSaHGqr9eEfXaPMy6Vq63K88/Z1+NKrcDVdsxVB8gJUT3JlWJD6j7uiMBpCH
+| /7dVsYTHA2SraT5qsMbu5UlbiY3O5j72ge6L3UZlgOGF5f+Rh76L1RXL0y8t/UJ5
+| Ls4szgvaRJsm2kTJPBJODb2XUNTJamlsWphSWf4ZfRlOeBok8JDn2FM/qZWDP8+P
+| ctGh4BZJxf86RBjPRE2t1Du4+VX+NNA9SnACPapXVQIDAQABoyQwIjATBgNVHSUE
+| DDAKBggrBgEFBQcDATALBgNVHQ8EBAMCBDAwDQYJKoZIhvcNAQELBQADggEBAA1q
+| +2upap1DgpTrs9hMUFpakzBGbIBpkQLGiMU3m8MJpcyI9Pj18ABPXRVZhGzg0ajj
+| tsHODe5jO5KQ/7jVnf5IZQsAuxGYoURYb5+b6Y7qR2M3zQKPOYWpTQNMRYD5EfcY
+| MR3nNPCfKMbjNT4bUXauc3dWUgMRNLzvHLEU7c3fX00kso/Q68ADBOc0kHFB9a14
+| nfKzUukWzKP67U5lAi5+MgcHy8zwXL1foBRgwRdo2l5GSxhSljJ2cf4/k8DAnr3p
+| A4d70B+DZ0XxStS1rOGfUHmzoA80pGVnpRD4fEQQQbIr2RytT2N+kI/MdNRtiU0n
+| kO7s9o99P0/VkQyrGTA=
+|_-----END CERTIFICATE-----
+|_ssl-date: 2023-09-27T18:28:59+00:00; 0s from scanner time.
+5985/tcp  open  http          syn-ack ttl 127 Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+|_http-server-header: Microsoft-HTTPAPI/2.0
+|_http-title: Not Found
+9389/tcp  open  mc-nmf        syn-ack ttl 127 .NET Message Framing
+47001/tcp open  http          syn-ack ttl 127 Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+|_http-server-header: Microsoft-HTTPAPI/2.0
+|_http-title: Not Found
+49664/tcp open  msrpc         syn-ack ttl 127 Microsoft Windows RPC
+49665/tcp open  msrpc         syn-ack ttl 127 Microsoft Windows RPC
+49666/tcp open  msrpc         syn-ack ttl 127 Microsoft Windows RPC
+49669/tcp open  msrpc         syn-ack ttl 127 Microsoft Windows RPC
+49670/tcp open  ncacn_http    syn-ack ttl 127 Microsoft Windows RPC over HTTP 1.0
+49671/tcp open  msrpc         syn-ack ttl 127 Microsoft Windows RPC
+49673/tcp open  msrpc         syn-ack ttl 127 Microsoft Windows RPC
+49677/tcp open  msrpc         syn-ack ttl 127 Microsoft Windows RPC
+49685/tcp open  msrpc         syn-ack ttl 127 Microsoft Windows RPC
+49693/tcp open  msrpc         syn-ack ttl 127 Microsoft Windows RPC
+49821/tcp open  msrpc         syn-ack ttl 127 Microsoft Windows RPC
+1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+SF-Port53-TCP:V=7.80%I=7%D=9/27%Time=651473C3%P=x86_64-pc-linux-gnu%r(DNSV
+SF:ersionBindReqTCP,20,"\0\x1e\0\x06\x81\x04\0\x01\0\0\0\0\0\0\x07version\
+SF:x04bind\0\0\x10\0\x03");
+No exact OS matches for host (If you know what OS is running on it, see https://nmap.org/submit/ ).
+TCP/IP fingerprint:
+OS:SCAN(V=7.80%E=4%D=9/27%OT=53%CT=1%CU=36460%PV=Y%DS=2%DC=T%G=Y%TM=651474E
+OS:4%P=x86_64-pc-linux-gnu)SEQ(SP=105%GCD=1%ISR=10A%TI=I%CI=I%II=I%SS=S%TS=
+OS:U)OPS(O1=M508NW8NNS%O2=M508NW8NNS%O3=M508NW8%O4=M508NW8NNS%O5=M508NW8NNS
+OS:%O6=M508NNS)WIN(W1=FFFF%W2=FFFF%W3=FFFF%W4=FFFF%W5=FFFF%W6=FF70)ECN(R=Y%
+OS:DF=Y%T=80%W=FFFF%O=M508NW8NNS%CC=Y%Q=)T1(R=Y%DF=Y%T=80%S=O%A=S+%F=AS%RD=
+OS:0%Q=)T2(R=Y%DF=Y%T=80%W=0%S=Z%A=S%F=AR%O=%RD=0%Q=)T3(R=Y%DF=Y%T=80%W=0%S
+OS:=Z%A=O%F=AR%O=%RD=0%Q=)T4(R=Y%DF=Y%T=80%W=0%S=A%A=O%F=R%O=%RD=0%Q=)T5(R=
+OS:Y%DF=Y%T=80%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)T6(R=Y%DF=Y%T=80%W=0%S=A%A=O%F=
+OS:R%O=%RD=0%Q=)T7(R=Y%DF=Y%T=80%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)U1(R=Y%DF=N%T
+OS:=80%IPL=164%UN=0%RIPL=G%RID=G%RIPCK=G%RUCK=G%RUD=G)IE(R=Y%DFI=N%T=80%CD=
+OS:Z)
+
+Network Distance: 2 hops
+TCP Sequence Prediction: Difficulty=261 (Good luck!)
+IP ID Sequence Generation: Incremental
+Service Info: Host: ATTACKTIVEDIREC; OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Host script results:
+|_clock-skew: mean: 0s, deviation: 0s, median: 0s
+| p2p-conficker: 
+|   Checking for Conficker.C or higher...
+|   Check 1 (port 62806/tcp): CLEAN (Couldn't connect)
+|   Check 2 (port 24973/tcp): CLEAN (Couldn't connect)
+|   Check 3 (port 58246/udp): CLEAN (Failed to receive data)
+|   Check 4 (port 53676/udp): CLEAN (Timeout)
+|_  0/4 checks are positive: Host is CLEAN or ports are blocked
+| smb2-security-mode: 
+|   2.02: 
+|_    Message signing enabled and required
+| smb2-time: 
+|   date: 2023-09-27T18:28:43
+|_  start_date: N/A
+
+TRACEROUTE (using port 1723/tcp)
+HOP RTT       ADDRESS
+1   208.82 ms 10.8.0.1
+2   218.01 ms 10.10.186.74
+
+NSE: Script Post-scanning.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE at 11:31
+Completed NSE at 11:31, 0.00s elapsed
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE at 11:31
+Completed NSE at 11:31, 0.00s elapsed
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE at 11:31
+Completed NSE at 11:31, 0.00s elapsed
+Read data files from: /usr/bin/../share/nmap
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 1144.87 seconds
+           Raw packets sent: 72004 (3.172MB) | Rcvd: 68807 (2.773MB)

