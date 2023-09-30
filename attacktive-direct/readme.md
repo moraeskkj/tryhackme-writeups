@@ -195,87 +195,116 @@ i really don't know if i need to use this tools but if need to,i'll install it a
 ### Task3
 
 Question1: What tool will allow us to enumerate port 139/445?
+
 r: enum4linux
 
 Question2: What is the NetBIOS-Domain Name of the machine?
+
 r: THM-AD
 
 Question3: What invalid TLD do people commonly use for their Active Directory Domain?
+
 r: .local
 
 
 ### Task4
 
 Question1:What command within Kerbrute will allow us to enumerate valid usernames?
+
 r: userenum
 
 Question2:
 What notable account is discovered? (These should jump out at you)
+
 r: svc-admin
 
 Question3:
 What is the other notable account is discovered? (These should jump out at you)
+
 r: backup
 
 
 ### Task5
 
 Question1: We have two user accounts that we could potentially query a ticket from. Which user account can you query a ticket from with no password?
+
 r:svc-admin
 
 Question2: Looking at the Hashcat Examples Wiki page, what type of Kerberos hash did we retrieve from the KDC? (Specify the full name)
+
 r: kerberos 5 as-req etype 23
 
 Question3:What mode is the hash?
+
 r: 18200
 
 
 Question4:Now crack the hash with the modified password list provided, what is the user accounts password?
+
 r: management2005
 
 
 ### Task6
 
 Question1:What utility can we use to map remote SMB shares?
+
 r:smbclient
 
 Question2:Which option will list shares?
+
 r:-L
 
 Question3:How many remote shares is the server listing?
+
 r:6
 
 Question4:There is one particular share that we have access to that contains a text file. Which share is it?
+
 r:backup
 
 Question5:What is the content of the file?
+
 r:YmFja3VwQHNwb29reXNlYy5sb2NhbDpiYWNrdXAyNTE3ODYw
 
 Question6:Decoding the contents of the file, what is the full contents?
+
 r:backup@spookysec.local:backup2517860
 
 ### Task7
 
 Question1:What method allowed us to dump NTDS.DIT?
+
 r:DRSUAPI
 
 Question2:What is the Administrators NTLM hash?
+
 r:0e0363213e37b94221497260b0bcb4fc
 
 Question3:What method of attack could allow us to authenticate as the user without the password?
+
 r:pass the hash
 
 Question4:Using a tool called Evil-WinRM what option will allow us to use a hash?
+
 r: -H
 
 ### Task8
 
-Admin flag: TryHackMe{4ctiveD1rectoryM4st3r}
+Admin flag: 
 
-Backup Flag: TryHackMe{K3rb3r0s_Pr3_4uth}
+~~~
+TryHackMe{4ctiveD1rectoryM4st3r}
+~~~
 
-svc-admin Flag: TryHackMe{B4ckM3UpSc0tty!}
+Backup Flag:
+~~~
+TryHackMe{K3rb3r0s_Pr3_4uth}
+~~~
 
+svc-admin Flag: 
+~~~
+TryHackMe{B4ckM3UpSc0tty!}
+~~~
 
 
 
