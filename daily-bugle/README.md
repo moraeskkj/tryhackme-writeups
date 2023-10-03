@@ -81,14 +81,14 @@ Found user ['811', 'Super User', 'jonah', 'jonah@tryhackme.com', '$2y$10$0veO/JS
 john hash wordlist=/usr/share/wordlists/rockyou.txt 
 ```
 
-after maybe 20 minutes john breaked this hash omg 
+after maybe 20 minutes john broke this hash omg 
 
 user: jonah
 password: spiderman123
 
 ok,now i have a administrator account.
 
-i've successfully logged in web page /administrator and it looks like a word press admin panel or something like this
+i've successfully logged in web page /administrator and it looks like a word press administrator panel or something like this
 
 maybe i can update a php reverse shell as template or plugin?
 
@@ -100,7 +100,7 @@ i didn't have anything in contrab or suid permissions,any password or somethings
 
 i was having a few errors with grep to find something interesting so i did the linpeas and he founds an password on php file, thanks god i'm really was 
 
-$pass = 'nv5uz9r3ZEDzVjNu'
+	$pass = 'nv5uz9r3ZEDzVjNu'
 
 and now
 
@@ -108,7 +108,7 @@ and now
 ssh jjameson@$ip  
 ```
 
-now as i can the jjameson user and his password i can get the user.txt flag and see if i can do something for privilege escalation
+now as i got the jjameson user and his password i can get the user.txt flag and see if i can do something for privilege escalation
 
 ```bash
 sudo -l  
