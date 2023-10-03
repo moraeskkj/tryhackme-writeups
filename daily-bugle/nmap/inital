@@ -1,0 +1,43 @@
+Starting Nmap 7.80 ( https://nmap.org ) at 2023-10-02 07:51 PDT
+Initiating Ping Scan at 07:51
+Scanning 10.10.208.176 [4 ports]
+Completed Ping Scan at 07:51, 0.25s elapsed (1 total hosts)
+Initiating Parallel DNS resolution of 1 host. at 07:51
+Completed Parallel DNS resolution of 1 host. at 07:51, 0.01s elapsed
+Initiating SYN Stealth Scan at 07:51
+Scanning 10.10.208.176 [65535 ports]
+Discovered open port 22/tcp on 10.10.208.176
+Discovered open port 3306/tcp on 10.10.208.176
+Discovered open port 80/tcp on 10.10.208.176
+Increasing send delay for 10.10.208.176 from 0 to 5 due to 1000 out of 3332 dropped probes since last increase.
+SYN Stealth Scan Timing: About 5.98% done; ETC: 08:00 (0:08:07 remaining)
+SYN Stealth Scan Timing: About 7.16% done; ETC: 08:05 (0:13:11 remaining)
+SYN Stealth Scan Timing: About 9.16% done; ETC: 08:08 (0:15:02 remaining)
+SYN Stealth Scan Timing: About 16.31% done; ETC: 08:08 (0:14:12 remaining)
+SYN Stealth Scan Timing: About 23.36% done; ETC: 08:08 (0:13:20 remaining)
+SYN Stealth Scan Timing: About 28.92% done; ETC: 08:09 (0:12:27 remaining)
+SYN Stealth Scan Timing: About 33.87% done; ETC: 08:09 (0:11:33 remaining)
+SYN Stealth Scan Timing: About 39.37% done; ETC: 08:09 (0:10:39 remaining)
+SYN Stealth Scan Timing: About 46.29% done; ETC: 08:09 (0:09:46 remaining)
+SYN Stealth Scan Timing: About 51.56% done; ETC: 08:09 (0:08:51 remaining)
+SYN Stealth Scan Timing: About 60.06% done; ETC: 08:08 (0:06:36 remaining)
+SYN Stealth Scan Timing: About 65.93% done; ETC: 08:08 (0:05:45 remaining)
+SYN Stealth Scan Timing: About 72.19% done; ETC: 08:09 (0:04:53 remaining)
+SYN Stealth Scan Timing: About 77.46% done; ETC: 08:09 (0:03:56 remaining)
+SYN Stealth Scan Timing: About 82.48% done; ETC: 08:08 (0:03:02 remaining)
+SYN Stealth Scan Timing: About 87.55% done; ETC: 08:08 (0:02:10 remaining)
+SYN Stealth Scan Timing: About 92.87% done; ETC: 08:08 (0:01:14 remaining)
+Completed SYN Stealth Scan at 08:08, 1046.03s elapsed (65535 total ports)
+Nmap scan report for 10.10.208.176
+Host is up, received echo-reply ttl 63 (0.21s latency).
+Scanned at 2023-10-02 07:51:32 PDT for 1047s
+Not shown: 65532 closed ports
+Reason: 65532 resets
+PORT     STATE SERVICE REASON
+22/tcp   open  ssh     syn-ack ttl 63
+80/tcp   open  http    syn-ack ttl 63
+3306/tcp open  mysql   syn-ack ttl 63
+
+Read data files from: /usr/bin/../share/nmap
+Nmap done: 1 IP address (1 host up) scanned in 1046.41 seconds
+           Raw packets sent: 70107 (3.085MB) | Rcvd: 121415 (15.237MB)

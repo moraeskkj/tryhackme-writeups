@@ -1,0 +1,109 @@
+Starting Nmap 7.80 ( https://nmap.org ) at 2023-10-02 08:30 PDT
+NSE: Loaded 151 scripts for scanning.
+NSE: Script Pre-scanning.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE at 08:30
+Completed NSE at 08:30, 0.00s elapsed
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE at 08:30
+Completed NSE at 08:30, 0.00s elapsed
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE at 08:30
+Completed NSE at 08:30, 0.00s elapsed
+Initiating Ping Scan at 08:30
+Scanning 10.10.208.176 [4 ports]
+Completed Ping Scan at 08:30, 0.24s elapsed (1 total hosts)
+Initiating Parallel DNS resolution of 1 host. at 08:30
+Completed Parallel DNS resolution of 1 host. at 08:30, 0.02s elapsed
+Initiating SYN Stealth Scan at 08:30
+Scanning 10.10.208.176 [4 ports]
+Discovered open port 80/tcp on 10.10.208.176
+Discovered open port 22/tcp on 10.10.208.176
+Discovered open port 3306/tcp on 10.10.208.176
+Completed SYN Stealth Scan at 08:30, 0.24s elapsed (4 total ports)
+Initiating Service scan at 08:30
+Scanning 3 services on 10.10.208.176
+Completed Service scan at 08:30, 6.53s elapsed (3 services on 1 host)
+Initiating OS detection (try #1) against 10.10.208.176
+Retrying OS detection (try #2) against 10.10.208.176
+Retrying OS detection (try #3) against 10.10.208.176
+Retrying OS detection (try #4) against 10.10.208.176
+Retrying OS detection (try #5) against 10.10.208.176
+Initiating Traceroute at 08:30
+Completed Traceroute at 08:30, 0.21s elapsed
+Initiating Parallel DNS resolution of 2 hosts. at 08:30
+Completed Parallel DNS resolution of 2 hosts. at 08:30, 0.02s elapsed
+NSE: Script scanning 10.10.208.176.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE at 08:30
+Completed NSE at 08:30, 6.96s elapsed
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE at 08:30
+Completed NSE at 08:30, 1.05s elapsed
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE at 08:30
+Completed NSE at 08:30, 0.00s elapsed
+Nmap scan report for 10.10.208.176
+Host is up, received echo-reply ttl 63 (0.20s latency).
+Scanned at 2023-10-02 08:30:19 PDT for 36s
+
+PORT     STATE  SERVICE      REASON         VERSION
+22/tcp   open   ssh          syn-ack ttl 63 OpenSSH 7.4 (protocol 2.0)
+| ssh-hostkey: 
+|   2048 68:ed:7b:19:7f:ed:14:e6:18:98:6d:c5:88:30:aa:e9 (RSA)
+| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCbp89KqmXj7Xx84uhisjiT7pGPYepXVTr4MnPu1P4fnlWzevm6BjeQgDBnoRVhddsjHhI1k+xdnahjcv6kykfT3mSeljfy+jRc+2ejMB95oK2AGycavgOfF4FLPYtd5J97WqRmu2ZC2sQUvbGMUsrNaKLAVdWRIqO5OO07WIGtr3c2ZsM417TTcTsSh1Cjhx3F+gbgi0BbBAN3sQqySa91AFruPA+m0R9JnDX5rzXmhWwzAM1Y8R72c4XKXRXdQT9szyyEiEwaXyT0p6XiaaDyxT2WMXTZEBSUKOHUQiUhX7JjBaeVvuX4ITG+W8zpZ6uXUrUySytuzMXlPyfMBy8B
+|   256 5c:d6:82:da:b2:19:e3:37:99:fb:96:82:08:70:ee:9d (ECDSA)
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBKb+wNoVp40Na4/Ycep7p++QQiOmDvP550H86ivDdM/7XF9mqOfdhWK0rrvkwq9EDZqibDZr3vL8MtwuMVV5Src=
+|   256 d2:a9:75:cf:2f:1e:f5:44:4f:0b:13:c2:0f:d7:37:cc (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP4TcvlwCGpiawPyNCkuXTK5CCpat+Bv8LycyNdiTJHX
+80/tcp   open   http         syn-ack ttl 63 Apache httpd 2.4.6 ((CentOS) PHP/5.6.40)
+|_http-favicon: Unknown favicon MD5: 1194D7D32448E1F90741A97B42AF91FA
+|_http-generator: Joomla! - Open Source Content Management
+| http-methods: 
+|_  Supported Methods: GET HEAD POST OPTIONS
+| http-robots.txt: 15 disallowed entries 
+| /joomla/administrator/ /administrator/ /bin/ /cache/ 
+| /cli/ /components/ /includes/ /installation/ /language/ 
+|_/layouts/ /libraries/ /logs/ /modules/ /plugins/ /tmp/
+|_http-server-header: Apache/2.4.6 (CentOS) PHP/5.6.40
+|_http-title: Home
+3306/tcp open   mysql        syn-ack ttl 63 MariaDB (unauthorized)
+6244/tcp closed jeol-nsdtp-4 reset ttl 63
+No exact OS matches for host (If you know what OS is running on it, see https://nmap.org/submit/ ).
+TCP/IP fingerprint:
+OS:SCAN(V=7.80%E=4%D=10/2%OT=22%CT=6244%CU=34673%PV=Y%DS=2%DC=T%G=Y%TM=651A
+OS:E22F%P=x86_64-pc-linux-gnu)SEQ(SP=107%GCD=1%ISR=10A%TI=Z%TS=A)SEQ(SP=107
+OS:%GCD=1%ISR=10A%TI=Z%CI=I%II=I%TS=A)SEQ(SP=107%GCD=1%ISR=10A%TI=Z%II=I%TS
+OS:=A)OPS(O1=M508ST11NW6%O2=M508ST11NW6%O3=M508NNT11NW6%O4=M508ST11NW6%O5=M
+OS:508ST11NW6%O6=M508ST11)WIN(W1=68DF%W2=68DF%W3=68DF%W4=68DF%W5=68DF%W6=68
+OS:DF)ECN(R=Y%DF=Y%T=40%W=6903%O=M508NNSNW6%CC=Y%Q=)T1(R=Y%DF=Y%T=40%S=O%A=
+OS:S+%F=AS%RD=0%Q=)T2(R=N)T3(R=N)T4(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F=R%O=%RD=0%Q
+OS:=)T5(R=Y%DF=Y%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)T6(R=Y%DF=Y%T=40%W=0%S=A
+OS:%A=Z%F=R%O=%RD=0%Q=)T7(R=Y%DF=Y%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)U1(R=Y
+OS:%DF=N%T=40%IPL=164%UN=0%RIPL=G%RID=G%RIPCK=G%RUCK=G%RUD=G)IE(R=Y%DFI=N%T
+OS:=40%CD=S)
+
+Uptime guess: 0.042 days (since Mon Oct  2 07:30:59 2023)
+Network Distance: 2 hops
+TCP Sequence Prediction: Difficulty=263 (Good luck!)
+IP ID Sequence Generation: All zeros
+
+TRACEROUTE (using port 6244/tcp)
+HOP RTT       ADDRESS
+1   208.17 ms 10.8.0.1
+2   208.18 ms 10.10.208.176
+
+NSE: Script Post-scanning.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE at 08:30
+Completed NSE at 08:30, 0.00s elapsed
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE at 08:30
+Completed NSE at 08:30, 0.00s elapsed
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE at 08:30
+Completed NSE at 08:30, 0.00s elapsed
+Read data files from: /usr/bin/../share/nmap
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 36.81 seconds
+           Raw packets sent: 172 (14.028KB) | Rcvd: 1269 (490.197KB)
