@@ -1,0 +1,32 @@
+Starting Nmap 7.80 ( https://nmap.org ) at 2023-10-16 05:06 PDT
+Initiating Ping Scan at 05:06
+Scanning 10.10.71.216 [4 ports]
+Completed Ping Scan at 05:06, 0.23s elapsed (1 total hosts)
+Initiating Parallel DNS resolution of 1 host. at 05:06
+Completed Parallel DNS resolution of 1 host. at 05:06, 0.01s elapsed
+Initiating SYN Stealth Scan at 05:06
+Scanning 10.10.71.216 [65535 ports]
+Discovered open port 80/tcp on 10.10.71.216
+Discovered open port 445/tcp on 10.10.71.216
+Discovered open port 139/tcp on 10.10.71.216
+SYN Stealth Scan Timing: About 22.87% done; ETC: 05:08 (0:01:45 remaining)
+SYN Stealth Scan Timing: About 30.10% done; ETC: 05:09 (0:02:22 remaining)
+SYN Stealth Scan Timing: About 58.21% done; ETC: 05:12 (0:02:27 remaining)
+SYN Stealth Scan Timing: About 64.83% done; ETC: 05:12 (0:02:07 remaining)
+SYN Stealth Scan Timing: About 73.57% done; ETC: 05:13 (0:01:48 remaining)
+SYN Stealth Scan Timing: About 79.83% done; ETC: 05:13 (0:01:27 remaining)
+SYN Stealth Scan Timing: About 85.39% done; ETC: 05:13 (0:01:04 remaining)
+Completed SYN Stealth Scan at 05:13, 450.80s elapsed (65535 total ports)
+Nmap scan report for 10.10.71.216
+Host is up, received echo-reply ttl 63 (0.21s latency).
+Scanned at 2023-10-16 05:06:18 PDT for 451s
+Not shown: 65532 closed ports
+Reason: 65532 resets
+PORT    STATE SERVICE      REASON
+80/tcp  open  http         syn-ack ttl 63
+139/tcp open  netbios-ssn  syn-ack ttl 63
+445/tcp open  microsoft-ds syn-ack ttl 63
+
+Read data files from: /usr/bin/../share/nmap
+Nmap done: 1 IP address (1 host up) scanned in 451.20 seconds
+           Raw packets sent: 67990 (2.992MB) | Rcvd: 68030 (2.724MB)
