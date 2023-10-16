@@ -18,14 +18,6 @@
                 "source": false
               }
             }
-          },
-          {
-            "id": "31ba2bb5a43de339",
-            "type": "leaf",
-            "state": {
-              "type": "empty",
-              "state": {}
-            }
           }
         ]
       }
@@ -156,6 +148,16 @@
   },
   "active": "f4196e52d8397165",
   "lastOpenFiles": [
+    "attachments/Pasted image 20231016083401.png",
+    "attachments/Pasted image 20231016082813.png",
+    "attachments/Pasted image 20231016082740.png",
+    "attachments/Screenshot from 2023-10-16 08-24-39.png",
+    "README.md",
+    "attachments/Screenshot from 2023-10-16 08-24-39 1.png",
+    "hydra.restore",
+    "enum-users.sh",
+    "attachments/Pasted image 20231016071706.png",
+    "latest",
     "something.txt",
     "enumeration/enum4/enum4linux.txt",
     "enumeration/enum4",
@@ -163,16 +165,11 @@
     "enumeration/nmap",
     "enumeration",
     "enum4linux-ng.py",
-    "README.md",
     "attachments/Pasted image 20231016051220.png",
-    "nmap/inital.txt",
-    "nmap",
     "Untitled.md",
     "attachments/Pasted image 20231016044606.png",
     "attachments/Pasted image 20231016042545.png",
     "Pasted image 20231016043352.png",
-    "attachments/Pasted image 20231016042500.png",
-    "attachments",
-    "Pasted image 20231016042358.png"
+    "attachments/Pasted image 20231016042500.png"
   ]
 }
