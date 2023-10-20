@@ -338,6 +338,7 @@ AND....lmao nothing again.
 
 it's a joke, linpeas found some interesting things like a login that i didn't find from where it was and THIS.
 ![](attachments/Pasted%20image%2020231018092706.png)
+
 often i ignore this because i'm dumb. But maybe i can get user fox or rascal with port forwarding thecnique!
 
 i never did it, so it's a new thecnique that i'm gonna learn today! This blog i'll help me with this [infosec writeup port forwarding](https://infosecwriteups.com/gain-access-to-an-internal-machine-using-port-forwarding-penetration-testing-518c0b6a4a0e), and how are you gonna do this? dunno :D i need to read the blog first wait a minute and i'll explain here too.
