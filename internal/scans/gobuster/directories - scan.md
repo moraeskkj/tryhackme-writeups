@@ -7,3 +7,5 @@
 /javascript (Status: 301)
 /phpmyadmin (Status: 301)
 ```
+
+/blog -> i don't  nothing usefull,maybe i could do more with if i had credentials

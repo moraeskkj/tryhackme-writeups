@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "scans/gobuster/blog - dir.md",
+                "file": "README.md",
                 "mode": "source",
                 "source": false
               }
@@ -25,13 +25,14 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "scans/gobuster/blog - dir.md",
+                "file": "README.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -97,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "scans/gobuster/blog - dir.md",
+                "file": "README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "scans/gobuster/blog - dir.md",
+                "file": "README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "scans/gobuster/blog - dir.md"
+                "file": "README.md"
               }
             }
           }
@@ -158,36 +159,38 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "d003ccf871f7d722",
+  "active": "78a6d8098d99c7e6",
   "lastOpenFiles": [
+    "scans/gobuster/javascript - dir.md",
     "scans/gobuster/phpmyadmin - dir.md",
-    "README.md",
     "scans/gobuster/blog - dir.md",
+    "scans/nmap/ports/80 - HTTP.md",
+    "scans/nmap/ports/22 - SSH.md",
+    "README.md",
+    "attachments/Pasted image 20231022153338.png",
+    "attachments/Pasted image 20231022153244.png",
+    "attachments/Pasted image 20231022153205.png",
+    "attachments/Pasted image 20231022153108.png",
+    "pppd.til",
+    "pppd.id2",
+    "pppd.nam",
+    "pppd.id1",
+    "pppd.id0",
+    "pppd",
+    "attachments/Pasted image 20231022150519.png",
+    "attachments/Pasted image 20231022150311.png",
+    "attachments/Pasted image 20231022150229.png",
+    "attachments/Pasted image 20231022150105.png",
+    "attachments/Pasted image 20231022145645.png",
+    "php-rev-shell1.php",
+    "attachments/Pasted image 20231022144848.png",
+    "scans/gobuster/wordpress - dir.md",
     "scans/gobuster/directories - scan.md",
     "scans/nmap/final.md",
-    "scans/gobuster/attachments/Pasted image 20231022131701.png",
     "files/dreJeJV8",
     "files",
     "dreJeJV8",
-    "scans/gobuster/attachments/Pasted image 20231022125555.png",
-    "scans/gobuster/attachments/Pasted image 20231022121655.png",
-    "scans/gobuster/attachments",
-    "scans/gobuster/javascript - dir.md",
     "scans/nmap/inital.md",
-    "scans/gobuster/wordpress - dir.md",
-    "scans/nmap/ports/22 - SSH.md",
-    "scans/nmap/ports/80 - HTTP.md",
-    "scans/gobuster",
-    "attachments/Pasted image 20231022115519.png",
-    "scans/nmap/final.txt",
-    "scans/nmap/ports",
-    "attachments/Pasted image 20231022112918.png",
-    "scans/nmap/inital.txt",
-    "scans/nmap",
-    "scans",
-    "attachments/Pasted image 20231022110931.png",
-    "Pasted image 20231022110816.png",
-    "Pasted image 20231022110737.png",
     "first.md",
     "README.md.md"
   ]
