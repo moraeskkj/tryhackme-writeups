@@ -1,0 +1,194 @@
+{
+  "main": {
+    "id": "23c68e7c8c6285dd",
+    "type": "split",
+    "children": [
+      {
+        "id": "a1a18c7cf9133ae6",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d003ccf871f7d722",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "scans/gobuster/blog - dir.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "78a6d8098d99c7e6",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "scans/gobuster/blog - dir.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "815a3fe41a606de7",
+    "type": "split",
+    "children": [
+      {
+        "id": "d6a9b4de6b3b6524",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "6acd491ad67cde4c",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "af98ae65255432ae",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "e099ab07ec102fcd",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200
+  },
+  "right": {
+    "id": "707c2300bc75b74d",
+    "type": "split",
+    "children": [
+      {
+        "id": "07c7412d6733a540",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "9b48048a30b4ed40",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "scans/gobuster/blog - dir.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "11fb380b4ea855fd",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "scans/gobuster/blog - dir.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "6ec802a71b009749",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "e1ddbc526bee883a",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "scans/gobuster/blog - dir.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "d003ccf871f7d722",
+  "lastOpenFiles": [
+    "scans/gobuster/phpmyadmin - dir.md",
+    "README.md",
+    "scans/gobuster/blog - dir.md",
+    "scans/gobuster/directories - scan.md",
+    "scans/nmap/final.md",
+    "scans/gobuster/attachments/Pasted image 20231022131701.png",
+    "files/dreJeJV8",
+    "files",
+    "dreJeJV8",
+    "scans/gobuster/attachments/Pasted image 20231022125555.png",
+    "scans/gobuster/attachments/Pasted image 20231022121655.png",
+    "scans/gobuster/attachments",
+    "scans/gobuster/javascript - dir.md",
+    "scans/nmap/inital.md",
+    "scans/gobuster/wordpress - dir.md",
+    "scans/nmap/ports/22 - SSH.md",
+    "scans/nmap/ports/80 - HTTP.md",
+    "scans/gobuster",
+    "attachments/Pasted image 20231022115519.png",
+    "scans/nmap/final.txt",
+    "scans/nmap/ports",
+    "attachments/Pasted image 20231022112918.png",
+    "scans/nmap/inital.txt",
+    "scans/nmap",
+    "scans",
+    "attachments/Pasted image 20231022110931.png",
+    "Pasted image 20231022110816.png",
+    "Pasted image 20231022110737.png",
+    "first.md",
+    "README.md.md"
+  ]
+}
