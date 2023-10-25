@@ -17,6 +17,7 @@ $ nano /etc/hosts
 ```
 
 your hosts file will look like this:
+
 ![](attachments/Pasted%20image%2020231022110931.png)
 
 and now let's start with nmap scan, i'll create a folder to nmap.
@@ -106,15 +107,19 @@ but when i was trying to bruteforcing directories with gobuster i didn't find "w
 	note: please look at the name of the theme that you edited
 
 so now i'm inside the machine :)
+
 ![](attachments/Pasted%20image%2020231022150105.png)
 
 spawn better shell and etc:
+
 ![](attachments/Pasted%20image%2020231022150229.png)
 
 i found this user called by "aubreanna" but i can't access your directory.
+
 ![](attachments/Pasted%20image%2020231022150311.png)
 
 a lot of files in /var/www/html/ 
+
 ![](attachments/Pasted%20image%2020231022150519.png)
 
 i don't forget this machine has a ssh open and mysql running into, so maybe can i leak some credentials?
@@ -130,12 +135,15 @@ and i didn't find nothing.
 i'm found a binary in the snap folder called by "pppd" with suid permission that i want to analyze he with a ghidra, so while i'm doing this i'm gonna run linpeas in my reverse shell and see what happes ;)
 
 a lot of intersting things that linpeas found
+
 ![](attachments/Pasted%20image%2020231022153108.png)
 
 nothing here...
+
 ![](attachments/Pasted%20image%2020231022153205.png)
 
 nothing here too..
+
 ![](attachments/Pasted%20image%2020231022153338.png)
 
 pontentials cve's post exploitation:
@@ -152,6 +160,7 @@ now is a new day and yesterday i couldn't find "aubreanna" password :( but in ph
 then, i have all information of the db and i can create or remove all tables if i want to. But i didn't find anything that help me to get an user or root.
 
 good news, reading linpeas scan and checking the files i found this:
+
 ![](attachments/Pasted%20image%2020231022153244.png)
 
 ![](attachments/Pasted%20image%2020231023071338.png)
@@ -180,9 +189,11 @@ $ ./socat tcp-listen:8888,reuseaddr,fork tcp:localhost:8080 &
 ```
 
 and now the port 8888 is open:
+
 ![](attachments/Pasted%20image%2020231023075622.png)
 
 accessing it:
+
 ![](attachments/Pasted%20image%2020231023075700.png)
 
 another login page! i'm going to die i swear bro.
