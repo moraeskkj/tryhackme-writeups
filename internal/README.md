@@ -28,6 +28,7 @@ explaining again,i do more enumerations after this first scan using -A flags and
 
 while it is not done i'll see if there is a http server running...
 ![](attachments/Pasted%20image%2020231022112918.png)
+
 and had. So, it is the default page of apache but it's nothing there despite of that it can be misconfigured....i'll use gobuster to see if there is any directories exposed or anything like this.
 
 ```bash 
@@ -35,6 +36,7 @@ $ gobuster -w /usr/share/wordlists/dirbuster/directory-medium-2.3.txt -u interna
 ```
 
 ![](attachments/Pasted%20image%2020231022115519.png)
+
 ok,good but let me take a look at nmap scan first. And nmap scan found two ports, 80 running http server and 22 running ssh.
 
 so now i have these informations:
@@ -53,14 +55,17 @@ so,i'm taking note about all of these pages and trying to find an vuln, so when 
 
 ok i found this:
 ![](attachments/Pasted%20image%2020231022133902.png)
+
 so,as can you see, this login page of word press is so much verbose. I bet on "admin" user just to clear my mind and he exists and i know it because of this error message, it's  very verbose you know?
 
 if i put another aleatory user:  
 ![](attachments/Pasted%20image%2020231022140831.png)
+
 so,while i'm checking another pages and trying to find another vulns i'll put hydra to brute force this.
 
 first i'll look the request with burp to see the response and how this post form is sended to server.
 ![](attachments/Pasted%20image%2020231022141526.png)
+
 
 ```bash
 $ hydra -l admin -P /usr/share/wordlists/rockyou.txt internal.thm http-post-form "/blog/wp-login.php:log=^USER^+&pwd=^PASS^&wp-submit=Log+In&redirect_to=http%3A%2F%2Finternal.thm%2Fblog%2Fwp-admin%2F&testcookie=1:incorrect." -V -F
@@ -70,8 +75,8 @@ ok so, while hydra is trying there i'll search for more things..
 ![](attachments/Pasted%20image%2020231022142935.png)
 
 i found another login page, and these erros are weird.
-
 ![](attachments/Pasted%20image%2020231022143303.png)
+
 let's gooo. ok now i have credentials and i'm gonna login in the web site.
 
 so, as can you see i have access to wordpress panel and these panel have a lot of ways to make an rce.
@@ -85,10 +90,9 @@ there is two ways to do this reverse shell:
 	2. Go to Plugins and add an new plugin( maybe you'll need to use a plugin generator or something like this idk)
 
 i'm gonna use the first method beacause is more easier.
-
 ![](attachments/Pasted%20image%2020231022144848.png)
-i'm gonna modify the "404 Template" to a reverse shell from pentest monkey.
 
+i'm gonna modify the "404 Template" to a reverse shell from pentest monkey.
 ![](attachments/Pasted%20image%2020231022145645.png)
 
 now is just access this file to get the shell, usually these files remain in:
@@ -103,6 +107,7 @@ but when i was trying to bruteforcing directories with gobuster i didn't find "w
 
 so now i'm inside the machine :)
 ![](attachments/Pasted%20image%2020231022150105.png)
+
 spawn better shell and etc:
 ![](attachments/Pasted%20image%2020231022150229.png)
 
@@ -111,6 +116,7 @@ i found this user called by "aubreanna" but i can't access your directory.
 
 a lot of files in /var/www/html/ 
 ![](attachments/Pasted%20image%2020231022150519.png)
+
 i don't forget this machine has a ssh open and mysql running into, so maybe can i leak some credentials?
 
 i'll use grep to see if there is some credentials or something like this
@@ -128,6 +134,7 @@ a lot of intersting things that linpeas found
 
 nothing here...
 ![](attachments/Pasted%20image%2020231022153205.png)
+
 nothing here too..
 ![](attachments/Pasted%20image%2020231022153338.png)
 
@@ -146,7 +153,9 @@ then, i have all information of the db and i can create or remove all tables if 
 
 good news, reading linpeas scan and checking the files i found this:
 ![](attachments/Pasted%20image%2020231022153244.png)
+
 ![](attachments/Pasted%20image%2020231023071338.png)
+
 now i have one more credentials and a user privilege in the machine, i'll add in the list above ;)
 
 ```bash
@@ -154,6 +163,7 @@ $ ssh aubreanna@internal.thm
 ```
 
 ![](attachments/Pasted%20image%2020231023072931.png)
+
 good, got the first flag! and have this jenkins running locally.
 
 first i'll make a port forwarding to open this service and makes possible to me access it, if you want a explanation about port forwarding there is an notes that i made [notion-note](https://vivacious-church-b42.notion.site/port-forwarding-da3f15d4da6c4d06b2488687267165c2?pvs=4)
@@ -174,12 +184,14 @@ and now the port 8888 is open:
 
 accessing it:
 ![](attachments/Pasted%20image%2020231023075700.png)
+
 another login page! i'm going to die i swear bro.
 
 this site use cookies...
 
 and...anyone works :(
 ![](attachments/Pasted%20image%2020231023082133.png)
+
 ok, now i know that the version is 2.250.
 
 	THIS SPACE BETWEEN WHEN I FOUND THE VERSION AND THE COMMENT BELOW WAS 1 DAY AND A FEW HOURS...........
@@ -197,6 +209,7 @@ so,it's so much simpler that i wanna kill myself.
 first i need to open burp to capture the post to jenkins server because i'm gonna use this to make the hydra command 
 ![](attachments/Pasted%20image%2020231025044118.png)
 
+
 ```bash
 $ hydra -l admin -P /usr/share/wordlists/wordlists/rockyou.txt internal.thm -s 8888 http-form-post "j_acegi_security_check:j_username=^USER^&j_password=^PASS^&from=%2F&Submit=Sign+in:Invalid username or password" -V -F
 ```
@@ -204,10 +217,13 @@ really weird, an hour passed and i couldn't do anything, all what i get is false
 
 look at this response in burp:
 ![](attachments/Pasted%20image%2020231025062948.png)
+
 look, any strings in response but if i try using my browser:
 ![](attachments/Pasted%20image%2020231025063321.png)
+
 and with curl:
 ![](attachments/Pasted%20image%2020231025063355.png)
+
 i'm need to tidy up the hydra command to brute force it, but i don't know as the answer is going to hydra, the command above send their request to "j_acegi_security_check" and this don't send any response with strings(i don't know with has any other way to especify S or F in hydra but i didn't see anything in help and http-post-form -U so...), but in browser i'm redirected to ""/loginError" and in curl i don't have ideia what is going on...
 
 changing hydra command to
@@ -221,6 +237,7 @@ probaly not and i'll need to use another tool.
 
 nop,i could after using hydra with debug option i understood better.
 ![](attachments/Pasted%20image%2020231025070448.png)
+
 after a few tries hydra receives a bad request( maybe the command that i write was wrong and the request went wrong)
 
 
@@ -228,10 +245,13 @@ so i wrote the command again to send the request to /j_acegi_security_check, and
 
 the first image below is hydra sending get request to /j_acegi_security_check to see if the page is on or exists:
 ![](attachments/Pasted%20image%2020231025070718.png)
+
 if hydra receives the response, he is gonna make their request with password and user: 
 ![](attachments/Pasted%20image%2020231025070817.png)
+
 and after receives another response, he is gonna read and see with my conditional is in:
 ![](attachments/Pasted%20image%2020231025070853.png)
+
 AND HERE WAS THE PROBLEM.  i don't know why but is my mind i'm thinking hydra receives like a web browser and he didn't read the headers as strings (????). Yeah i'm really dumb, then when i remembered that all is just a big sausage of bytes and hydra just read this all of this bytes including header's looking for my conditional string i got it right. so when i changed my conditional string not for  "Invalid Password or username" that i was seeing in my browser but for "/loginError" which was the page  that this webapp redirect me if the password was wrong I FINALLY FOUND THE CREDENTIALS :).
 
 as can you see in the image above "attempt result: found 1" because in response had the "/loginError".
@@ -239,8 +259,9 @@ as can you see in the image above "attempt result: found 1" because in response 
 ```bash
 $ hydra -l admin -P /usr/share/wordlists/wordlists/rockyou.txt internal.thm -s 8888 http-form-post "/j_acegi_security_check:j_username=^USER^&j_password=^PASS^&from=%2F&Submit=Sign+in:/loginError" -V -F
 ```
+
 ![](attachments/Pasted%20image%2020231025072843.png)
-<<<<<<< HEAD
+
 login in it:
 ![](attachments/Pasted%20image%2020231025073201.png)
 
@@ -267,22 +288,13 @@ i'm dumb with docker and containers so probaly the machine before was container 
 
 and now...
 ![](attachments/Pasted%20image%2020231025083252.png)
+
 error...really i'm not disapointed. let's try with ssh
 ![](attachments/Pasted%20image%2020231025083557.png)
 thanks god.
 
 all credentials:
-<<<<<<< HEAD
 
-=======
-	
-	root:tr0ub13guM!@#123
-=======
-
-so now i have these credentials:
-
->>>>>>> 1c18686f85a1a5281de52f715c7541e0bf7ae95a
->>>>>>> e0289c3bbc6f4cce413ff6c6ca7658b008f5b5e3
 	ssh-loginUser='aubreanna';
 	ssh-loginPassword='bubb13guM!@#123';
 	jenkins-loginUser='admin';
@@ -294,11 +306,6 @@ so now i have these credentials:
 	define('DB_PASSWORD', 'wordpress123');
 	define('DB_USER', 'wordpress');
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-
->>>>>>> e0289c3bbc6f4cce413ff6c6ca7658b008f5b5e3
 so, recapping all:
 
 first this machine had a web page in port 80, but it was only the apache web server. Making a directory brute force i found directories like  "/blog", "/phpmyadmin" and "/wordpress". 
