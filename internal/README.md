@@ -272,7 +272,17 @@ error...really i'm not disapointed. let's try with ssh
 thanks god.
 
 all credentials:
+<<<<<<< HEAD
 
+=======
+	
+	root:tr0ub13guM!@#123
+=======
+
+so now i have these credentials:
+
+>>>>>>> 1c18686f85a1a5281de52f715c7541e0bf7ae95a
+>>>>>>> e0289c3bbc6f4cce413ff6c6ca7658b008f5b5e3
 	ssh-loginUser='aubreanna';
 	ssh-loginPassword='bubb13guM!@#123';
 	jenkins-loginUser='admin';
@@ -284,6 +294,11 @@ all credentials:
 	define('DB_PASSWORD', 'wordpress123');
 	define('DB_USER', 'wordpress');
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+
+>>>>>>> e0289c3bbc6f4cce413ff6c6ca7658b008f5b5e3
 so, recapping all:
 
 first this machine had a web page in port 80, but it was only the apache web server. Making a directory brute force i found directories like  "/blog", "/phpmyadmin" and "/wordpress". 
