@@ -1,4 +1,4 @@
-vpmn	pn### Internal by Tryhackme
+### Internal by Tryhackme
 
 first i'll leave the link to room [there](https://tryhackme.com/room/internal) and you can read the scope of "work" about this room if you want.  But basically this room needs to be  seen as real pentest, so...let's start this machine and report all vulnerabilities that i find and how to fix them.
 
@@ -240,6 +240,7 @@ as can you see in the image above "attempt result: found 1" because in response 
 $ hydra -l admin -P /usr/share/wordlists/wordlists/rockyou.txt internal.thm -s 8888 http-form-post "/j_acegi_security_check:j_username=^USER^&j_password=^PASS^&from=%2F&Submit=Sign+in:/loginError" -V -F
 ```
 ![](attachments/Pasted%20image%2020231025072843.png)
+<<<<<<< HEAD
 login in it:
 ![](attachments/Pasted%20image%2020231025073201.png)
 
@@ -271,8 +272,7 @@ error...really i'm not disapointed. let's try with ssh
 thanks god.
 
 all credentials:
-	
-	root:tr0ub13guM!@#123
+
 	ssh-loginUser='aubreanna';
 	ssh-loginPassword='bubb13guM!@#123';
 	jenkins-loginUser='admin';
@@ -283,7 +283,6 @@ all credentials:
 	$dbuser='phpmyadmin';
 	define('DB_PASSWORD', 'wordpress123');
 	define('DB_USER', 'wordpress');
-
 
 so, recapping all:
 
@@ -296,6 +295,3 @@ Logging with aubreanna user in ssh, i got the user flag and an txt file saying t
 Inside the real machine, not an docker. I did the same thing that is looking around and search for files with passwords or somethings like this, and the root credentials was in the /opt/note.txt file  :) 
 
 all of these problems would be avoided with the owners used strongs passwords and using some protections to bruteforcing forms :) 
-
-good room i like it a lot.  
-
