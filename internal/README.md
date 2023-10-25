@@ -1,4 +1,4 @@
-### Internal by Tryhackme
+	pn### Internal by Tryhackme
 
 first i'll leave the link to room [there](https://tryhackme.com/room/internal) and you can read the scope of "work" about this room if you want.  But basically this room needs to be  seen as real pentest, so...let's start this machine and report all vulnerabilities that i find and how to fix them.
 
@@ -126,17 +126,6 @@ i'm found a binary in the snap folder called by "pppd" with suid permission that
 a lot of intersting things that linpeas found
 ![](attachments/Pasted%20image%2020231022153108.png)
 
-so now i have these credentials:
-
-	ssh-loginUser='aubreanna';
-	ssh-loginPassword='bubb13guM!@#123';
-	wp-loginUser='admin';
-	wp-loginPass='my2boys';
-	$dbpass='B2Ud4fEOZmVq';
-	$dbuser='phpmyadmin';
-	define('DB_PASSWORD', 'wordpress123');
-	define('DB_USER', 'wordpress');
-
 nothing here...
 ![](attachments/Pasted%20image%2020231022153205.png)
 nothing here too..
@@ -167,7 +156,7 @@ $ ssh aubreanna@internal.thm
 ![](attachments/Pasted%20image%2020231023072931.png)
 good, got the first flag! and have this jenkins running locally.
 
-first i'll make a port forwarding to open this service and makes possible to access, if you want a explanation about port forwarding there is an notes that i made [notion-note](https://vivacious-church-b42.notion.site/port-forwarding-da3f15d4da6c4d06b2488687267165c2?pvs=4)
+first i'll make a port forwarding to open this service and makes possible to me access it, if you want a explanation about port forwarding there is an notes that i made [notion-note](https://vivacious-church-b42.notion.site/port-forwarding-da3f15d4da6c4d06b2488687267165c2?pvs=4)
 
 ```bash
 in my machine:
@@ -183,11 +172,87 @@ $ ./socat tcp-listen:8888,reuseaddr,fork tcp:localhost:8080 &
 and now the port 8888 is open:
 ![](attachments/Pasted%20image%2020231023075622.png)
 
+accessing it:
 ![](attachments/Pasted%20image%2020231023075700.png)
 another login page! i'm going to die i swear bro.
 
-this site use cookies and i read before that jenkins can be exploited using cookies but first i'm gonna try access it with the credentials that i have.
+this site use cookies...
 
 and...anyone works :(
 ![](attachments/Pasted%20image%2020231023082133.png)
-ok, now i know that the version is 2.250
+ok, now i know that the version is 2.250.
+
+	THIS SPACE BETWEEN WHEN I FOUND THE VERSION AND THE COMMENT BELOW WAS 1 DAY AND A FEW HOURS...........
+
+i was entering on a giant habbit hole and the only thing what i needed to do was brute force it ;) 
+
+ok,let me explain myself, maybe i'm dumb or something but i hadn't way to knowing it, even knowing that "admin" user is the standard user for jenkins service.
+
+i've tried all that you can imagine, probaly i read two hundred blogs and search five thousand files in the ssh session between this time....but i found this beautiful words here about jenkins:
+
+	For Red Teamers, Jenkins is also the battlefield that every hacker would like to control. If someone takes control of the Jenkins server, he can gain amounts of source code and credential, or even control the Jenkins node! In our DEVCORE Red Team cases, there are also several cases that compromised whole the corporation just from a Jenkins server as the entry point!
+
+so,it's so much simpler that i wanna kill myself.
+
+first i need to open burp to capture the post to jenkins server because i'm gonna use this to make the hydra command 
+![](attachments/Pasted%20image%2020231025044118.png)
+
+```bash
+$ hydra -l admin -P /usr/share/wordlists/wordlists/rockyou.txt internal.thm -s 8888 http-form-post "j_acegi_security_check:j_username=^USER^&j_password=^PASS^&from=%2F&Submit=Sign+in:Invalid username or password" -V -F
+```
+really weird, an hour passed and i couldn't do anything, all what i get is false positive and i have an ideia why of it.
+
+look at this response in burp:
+![](attachments/Pasted%20image%2020231025062948.png)
+look, any strings in response but if i try using my browser:
+![](attachments/Pasted%20image%2020231025063321.png)
+and with curl:
+![](attachments/Pasted%20image%2020231025063355.png)
+i'm need to tidy up the hydra command to brute force it, but i don't know as the answer is going to hydra, the command above send their request to "j_acegi_security_check" and this don't send any response with strings(i don't know with has any other way to especify S or F in hydra but i didn't see anything in help and http-post-form -U so...), but in browser i'm redirected to ""/loginError" and in curl i don't have ideia what is going on...
+
+changing hydra command to
+
+```bash
+hydra -l admin -P /usr/share/wordlists/wordlists/rockyou.txt 10.10.51.182 -s 8888 http-form-post "/login?from=%2F:j_username=^USER^&j_password=^PASS^&from=%2F&Submit=Sign+in:Invalid username or password" -V -F -I
+```
+now i'm sending my request to "/login" but the page response sending it to "j_acegi_security_check" and after redirect me to "loginError" if it is wrong credentials, so  i don't know if it will work :(
+
+probaly not and i'll need to use another tool.
+
+nop,i could after using hydra with debug option i understood better.
+![](attachments/Pasted%20image%2020231025070448.png)
+after a few tries hydra receives a bad request( maybe the command that i write was wrong and the request went wrong)
+
+
+so i wrote the command again to send the request to /j_acegi_security_check, and analyzing hydra...
+
+the first image below is hydra sending get request to /j_acegi_security_check to see if the page is on or exists:
+![](attachments/Pasted%20image%2020231025070718.png)
+if hydra receives the response, he is gonna make their request with password and user: 
+![](attachments/Pasted%20image%2020231025070817.png)
+and after receives another response, he is gonna read and see with my conditional is in:
+![](attachments/Pasted%20image%2020231025070853.png)
+AND HERE WAS THE PROBLEM.  i don't know why but is my mind i'm thinking hydra receives like a web browser and he didn't read the headers as strings (????). Yeah i'm really dumb, then when i remembered that all is just a big sausage of bytes and hydra just read this all of this bytes including header's looking for my conditional string i got it right. so when i changed my conditional string not for  "Invalid Password or username" that i was seeing in my browser but for "/loginError" which was the page  that this webapp redirect me if the password was wrong I FINALLY FOUND THE CREDENTIALS :).
+
+as can you see in the image above "attempt result: found 1" because in response had the "/loginError".
+
+```bash
+$ hydra -l admin -P /usr/share/wordlists/wordlists/rockyou.txt internal.thm -s 8888 http-form-post "/j_acegi_security_check:j_username=^USER^&j_password=^PASS^&from=%2F&Submit=Sign+in:/loginError" -V -F
+```
+![](attachments/Pasted%20image%2020231025072843.png)
+
+so now i have these credentials:
+
+	ssh-loginUser='aubreanna';
+	ssh-loginPassword='bubb13guM!@#123';
+	jenkins-loginUser='admin';
+	jenkins-loginPass='spongebob';
+	wp-loginUser='admin';
+	wp-loginPass='my2boys';
+	$dbpass='B2Ud4fEOZmVq';
+	$dbuser='phpmyadmin';
+	define('DB_PASSWORD', 'wordpress123');
+	define('DB_USER', 'wordpress');
+
+![](attachments/Pasted%20image%2020231025073201.png)
+
