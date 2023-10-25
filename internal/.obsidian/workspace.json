@@ -18,21 +18,8 @@
                 "source": false
               }
             }
-          },
-          {
-            "id": "78a6d8098d99c7e6",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "README.md",
-                "mode": "source",
-                "source": false
-              }
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -159,26 +146,29 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "78a6d8098d99c7e6",
+  "active": "d003ccf871f7d722",
   "lastOpenFiles": [
-    "attachments/Pasted image 20231023082133.png",
-    "attachments/Pasted image 20231023075700.png",
-    "attachments/Pasted image 20231023075622.png",
-    "attachments/Pasted image 20231023072931.png",
-    "attachments/Pasted image 20231023072820.png",
-    "attachments/Pasted image 20231023070638.png",
-    "README.md",
-    "attachments/Pasted image 20231023071338.png",
-    "attachments/Pasted image 20231023071327.png",
-    "scans/gobuster/wordpress - dir.md",
-    "attachments/Pasted image 20231023063651.png",
-    "attachments/Pasted image 20231023063109.png",
-    "scans/gobuster/javascript - dir.md",
-    "scans/gobuster/phpmyadmin - dir.md",
+    "attachments/Pasted image 20231025083557.png",
+    "attachments/Pasted image 20231025083252.png",
+    "attachments/Pasted image 20231025082919.png",
+    "attachments/Pasted image 20231025081856.png",
     "scans/gobuster/blog - dir.md",
+    "scans/gobuster/directories - scan.md",
+    "scans/gobuster/phpmyadmin - dir.md",
+    "scans/gobuster/javascript - dir.md",
+    "README.md",
+    "scans/gobuster/wordpress - dir.md",
+    "attachments/Pasted image 20231025073201.png",
+    "attachments/Pasted image 20231025072843.png",
+    "attachments/Pasted image 20231025072709.png",
+    "attachments/Pasted image 20231025072312.png",
+    "attachments/Pasted image 20231025070853.png",
+    "attachments/Pasted image 20231025070817.png",
+    "attachments/Pasted image 20231025070718.png",
+    "credentials.txt",
+    "scans/nmap/inital.md",
     "scans/nmap/ports/80 - HTTP.md",
     "scans/nmap/ports/22 - SSH.md",
-    "attachments/Pasted image 20231022153338.png",
     "pppd.til",
     "pppd.id2",
     "pppd.nam",
@@ -186,12 +176,9 @@
     "pppd.id0",
     "pppd",
     "php-rev-shell1.php",
-    "scans/gobuster/directories - scan.md",
     "scans/nmap/final.md",
     "files/dreJeJV8",
     "files",
-    "dreJeJV8",
-    "scans/nmap/inital.md",
     "first.md",
     "README.md.md"
   ]
