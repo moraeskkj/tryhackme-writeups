@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 vpmn	pn### Internal by Tryhackme
+=======
+	pn### Internal by Tryhackme
+>>>>>>> 1c18686f85a1a5281de52f715c7541e0bf7ae95a
 
 first i'll leave the link to room [there](https://tryhackme.com/room/internal) and you can read the scope of "work" about this room if you want.  But basically this room needs to be  seen as real pentest, so...let's start this machine and report all vulnerabilities that i find and how to fix them.
 
@@ -240,6 +244,7 @@ as can you see in the image above "attempt result: found 1" because in response 
 $ hydra -l admin -P /usr/share/wordlists/wordlists/rockyou.txt internal.thm -s 8888 http-form-post "/j_acegi_security_check:j_username=^USER^&j_password=^PASS^&from=%2F&Submit=Sign+in:/loginError" -V -F
 ```
 ![](attachments/Pasted%20image%2020231025072843.png)
+<<<<<<< HEAD
 login in it:
 ![](attachments/Pasted%20image%2020231025073201.png)
 
@@ -273,6 +278,11 @@ thanks god.
 all credentials:
 	
 	root:tr0ub13guM!@#123
+=======
+
+so now i have these credentials:
+
+>>>>>>> 1c18686f85a1a5281de52f715c7541e0bf7ae95a
 	ssh-loginUser='aubreanna';
 	ssh-loginPassword='bubb13guM!@#123';
 	jenkins-loginUser='admin';
@@ -284,6 +294,7 @@ all credentials:
 	define('DB_PASSWORD', 'wordpress123');
 	define('DB_USER', 'wordpress');
 
+<<<<<<< HEAD
 
 so, recapping all:
 
@@ -297,5 +308,4 @@ Inside the real machine, not an docker. I did the same thing that is looking aro
 
 all of these problems would be avoided with the owners used strongs passwords and using some protections to bruteforcing forms :) 
 
-good room i like it a lot.  
 

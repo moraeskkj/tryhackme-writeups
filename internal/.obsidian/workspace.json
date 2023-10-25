@@ -148,10 +148,13 @@
   },
   "active": "d003ccf871f7d722",
   "lastOpenFiles": [
+<<<<<<< HEAD
     "attachments/Pasted image 20231025083557.png",
     "attachments/Pasted image 20231025083252.png",
     "attachments/Pasted image 20231025082919.png",
     "attachments/Pasted image 20231025081856.png",
+=======
+>>>>>>> 1c18686f85a1a5281de52f715c7541e0bf7ae95a
     "scans/gobuster/blog - dir.md",
     "scans/gobuster/directories - scan.md",
     "scans/gobuster/phpmyadmin - dir.md",
@@ -165,6 +168,12 @@
     "attachments/Pasted image 20231025070853.png",
     "attachments/Pasted image 20231025070817.png",
     "attachments/Pasted image 20231025070718.png",
+<<<<<<< HEAD
+=======
+    "attachments/Pasted image 20231025070448.png",
+    "attachments/Pasted image 20231025063355.png",
+    "attachments/Pasted image 20231025063321.png",
+>>>>>>> 1c18686f85a1a5281de52f715c7541e0bf7ae95a
     "credentials.txt",
     "scans/nmap/inital.md",
     "scans/nmap/ports/80 - HTTP.md",
